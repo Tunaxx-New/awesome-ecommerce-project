@@ -30,15 +30,3 @@ jobs:
       - name: Run Batch File Docker Compose Build and Run
         run: |
           ./docker/development-workflow.bat
-
-        # Show the logs after starting the services.
-      - name: Show Docker Compose logs
-        run: |
-          docker-compose logs
-        working-directory: ./docker
-
-        # Clean up after the services have been tested.
-      - name: Clean up
-        run: |
-          docker-compose down
-        working-directory: ./docker
