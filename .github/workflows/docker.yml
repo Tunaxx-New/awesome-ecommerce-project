@@ -21,6 +21,10 @@ jobs:
       - name: Set up Docker Compose
         run: docker-compose --version
         continue-on-error: true
+      
+      - name: Set execute permissions for the batch file
+        run: |
+          chmod +x ./docker/development.bat
 
         # Specify the path to your directory containing the docker-compose.yml file.
       - name: Run Batch File Docker Compose Build and Run
