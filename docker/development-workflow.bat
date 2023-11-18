@@ -3,4 +3,4 @@ docker-compose -f docker/Authorization/docker-compose-dev.yml -p ecommerce-green
 echo "Show logs"
 docker-compose -f docker/Authorization/docker-compose-dev.yml logs
 echo "Docker compose down"
-docker-compose -f docker/Authorization/docker-compose-dev.yml down
+docker-compose -f Authorization/docker-compose-dev.yml down

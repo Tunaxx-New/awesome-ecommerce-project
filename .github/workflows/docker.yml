@@ -1,0 +1,32 @@
+name: Docker Compose Build and Run
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+        # Checking compose version
+      - name: Set up Docker Compose
+        run: docker-compose --version
+        continue-on-error: true
+      
+      - name: Set execute permissions for the batch file
+        run: |
+          chmod +x ./docker/development-workflow.bat
+
+        # Specify the path to your directory containing the docker-compose.yml file.
+      - name: Run Batch File Docker Compose Build and Run
+        run: |
+          ./docker/development-workflow.bat
