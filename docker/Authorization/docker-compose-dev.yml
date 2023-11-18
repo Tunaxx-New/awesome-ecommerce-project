@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  auth:
+    build:
+      context: ./auth-service
+      dockerfile: ./dev.Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  db:
+    build:
+        context: ./db
+        dockerfile: ./dev.Dockerfile
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-dev:/var/lib/mysql
+    
+volumes:
+  db-dev:
