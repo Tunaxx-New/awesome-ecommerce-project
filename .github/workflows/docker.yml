@@ -24,7 +24,7 @@ jobs:
       
       - name: Set execute permissions for the batch file
         run: |
-          chmod +x ./docker/development.bat
+          chmod +x ./docker/development-workflow.bat
 
         # Specify the path to your directory containing the docker-compose.yml file.
       - name: Run Batch File Docker Compose Build and Run
