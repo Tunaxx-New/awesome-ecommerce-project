@@ -1,10 +1,10 @@
 -- Create a database
-CREATE DATABASE $MYSQL_DATABASE;
+CREATE DATABASE greenshop-db;
 
 -- Switch to the new database
-USE $MYSQL_DATABASE;
+USE greenshop-db;
 
 -- Create a user and grant privileges
-CREATE USER '$MYSQL_USER'@'$MYSQL_ROOT_HOST' IDENTIFIED BY '$MYSQL_PASSWORD'; -- Create user
-GRANT ALL PRIVILEGES ON *.* TO '$MYSQL_USER'@'$MYSQL_ROOT_HOST'; -- Grant all privileges
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin'; -- Create user
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost'; -- Grant all privileges
 FLUSH PRIVILEGES; -- Refresh privileges
