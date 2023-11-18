@@ -1,0 +1,8 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "material-icon-theme.folders.associations": {
+        "auth":  "App",
+        "repositories": "Server",
+    }
+}
