@@ -29,7 +29,7 @@ jobs:
         # Specify the path to your directory containing the docker-compose.yml file.
       - name: Run Batch File Docker Compose Build and Run
         run: |
-          ./docker/development.bat
+          ./docker/development-workflow.bat
 
         # Show the logs after starting the services.
       - name: Show Docker Compose logs
