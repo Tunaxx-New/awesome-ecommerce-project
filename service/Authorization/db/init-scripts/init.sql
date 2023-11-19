@@ -1,4 +1,3 @@
--- Create a database
 CREATE DATABASE `${MYSQL_DATABASE}`;
 
 -- Switch to the new database
