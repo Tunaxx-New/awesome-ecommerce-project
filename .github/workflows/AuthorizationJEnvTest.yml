@@ -1,0 +1,42 @@
+name: Authorization Java Environment Test
+
+on:
+  push:
+    branches:
+      - main
+      - CI/CD-Management
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '17'
+
+    - name: Build with Gradle
+      run: |
+        cd service/Authorization/service/auth
+        chmod +x gradlew
+        ./gradlew clean build --warning-mode=all --stacktrace
+    - name: Run Spring Boot Application
+      run: |
+        nohup ./gradlew bootRun > output.log 2>&1 &
+    - name: Wait for Spring Boot to start
+      run: sleep 30
+
+    - name: Verify Application is Running
+      run: |
+        RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/actuator/health)
+        if [ "$RESPONSE_CODE" -eq 200 ]; then
+          echo "Application is running successfully!"
+        else
+          echo "Failed to start the application."
+          exit 1
+        fi
