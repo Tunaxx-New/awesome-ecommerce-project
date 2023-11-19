@@ -1,0 +1,27 @@
+.cal{
+    color:red
+}
+
+.form{
+    display: flex;
+    width: 600px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    width: 300px;
+    gap: 40px;
+}
+
+.form__input{
+    width: 280px;
+    padding-left: 6px;
+    height: 40px;
+    width: 280px;
+}
+
+
+.form__button{
+    width: 300px;
+    height: 30px;
+    color: white;
+}

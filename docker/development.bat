@@ -1,3 +1,4 @@
+
 echo "Starting project on development mode"
 docker-compose -f ./Authorization/docker-compose-dev.yml -p greenshop-dev up --build > docker_log.txt 2>&1
 
