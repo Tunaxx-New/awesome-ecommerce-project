@@ -1,0 +1,6 @@
+[mysqld]
+mysql-native-password = ON
+sql_mode = NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+
+[client]
+default-character-set = utf8mb4

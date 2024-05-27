@@ -1,0 +1,63 @@
+version: '3'
+
+services:
+  service:
+    build:
+      context: ../../service/Authorization/service/auth
+      dockerfile: ./dev.Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  db:
+    build:
+        context: ../../service/Authorization/db
+        dockerfile: ./dev.Dockerfile
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-dev:/var/lib/mysql
+    deploy:
+        resources:
+            limits:
+                cpus: 2 # Limit to 4 CPUs
+                memory: 600M # Limit to 600MiB of memory
+
+  web:
+    build:
+        context: ../../web/Authorization
+        dockerfile: ./dev.Dockerfile
+    ports:
+      - "5173:5173"
+    depends_on:
+      - service
+      
+  db-backup:
+    build:
+        context: ../../service/Authorization/db
+        dockerfile: ./mysql-backup.Dockerfile
+    ports:
+      - "3307:3307"
+    volumes:
+      - db-dev:/var/lib/mysql
+    depends_on:
+      - db
+      
+  minio:
+    image: minio/minio
+    container_name: minio
+    ports:
+      - "9000:9000"
+    environment:
+      MINIO_ACCESS_KEY: minioaccesskey
+      MINIO_SECRET_KEY: miniosecretkey
+    volumes:
+      - minio-dev:/data
+    command: server /data
+
+volumes:
+  db-dev:
+  minio-dev: 

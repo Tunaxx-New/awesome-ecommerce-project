@@ -8,4 +8,5 @@ import com.kn.auth.models.Authentication;
 
 public interface AuthenticationRepository extends JpaRepository<Authentication, Integer> {
     Optional<Authentication> findByEmail(String email);
+    void deleteByEmail(String email);
 }

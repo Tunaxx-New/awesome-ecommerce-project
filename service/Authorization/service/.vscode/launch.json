@@ -6,17 +6,17 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DatabaseUnitTest",
+            "request": "launch",
+            "mainClass": "com.kn.auth.unit_tests.DatabaseUnitTest.DatabaseUnitTest",
+            "projectName": "auth"
+        },
+        {
+            "type": "java",
             "name": "Application",
             "request": "launch",
             "mainClass": "com.kn.auth.Application",
             "projectName": "auth",
-            "args": "-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=1044"
-        },
-        {
-            "type": "java",
-            "name": "Launch",
-            "request": "launch",
-            "mainClass": "Application",
             "args": "-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=1044"
         }
     ]

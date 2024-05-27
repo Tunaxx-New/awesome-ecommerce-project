@@ -1,0 +1,8 @@
+FROM databack/mysql-backup
+
+ENV DB_SERVER=172.18.0.1
+ENV DB_USER=admin
+ENV DB_PASS=admin
+ENV DB_NAMES=db
+ENV DB_DUMP_FREQ=60
+ENV DB_DUMP_TARGET=/db

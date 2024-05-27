@@ -5,19 +5,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kn.auth.requests.AuthenticationRequest;
-import com.kn.auth.services.ForgotService;
+import com.kn.auth.services.AccessReturnService;
 
-// ForgotPasswordController.java
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
-@RequestMapping("/forgot")
-public class ForgotController {
+@RequestMapping("/public/forgot")
+@Tag(name = "Authentication", description = "Forgot password endpoints for public")
+public class AccessReturnController {
 
     @Autowired
-    private ForgotService forgotPasswordService;
+    private AccessReturnService forgotPasswordService;
 
     @PostMapping("/send")
     public ResponseEntity<String> forgotPassword(@RequestBody AuthenticationRequest request) {
@@ -27,8 +28,7 @@ public class ForgotController {
 
     @PostMapping("/check")
     public ResponseEntity<String> resetPassword(@RequestBody AuthenticationRequest request) {
-        //forgotPasswordService.processResetPassword(request);
+        // forgotPasswordService.processResetPassword(request);
         return ResponseEntity.ok("Reset link sent to the email address.");
     }
 }
-
