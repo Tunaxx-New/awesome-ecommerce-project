@@ -31,7 +31,7 @@ services:
     deploy:
         resources:
             limits:
-                cpus: 2 # Limit to 4 CPUs
+                cpus: 1 # Limit to 4 CPUs
                 memory: 600M # Limit to 600MiB of memory
   db-backup:
     build:
