@@ -12,5 +12,7 @@ COPY ./init-scripts/*.sh /etc/
 
 RUN chmod -R 755 /docker-entrypoint-initdb.d/
 
+CMD [""]
+
 # Start the MySQL server and run mysql_upgrade
 CMD ["mysqld"]

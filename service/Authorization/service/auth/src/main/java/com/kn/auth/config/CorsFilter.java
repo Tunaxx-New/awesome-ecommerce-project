@@ -1,4 +1,6 @@
-package com.kn.auth.config;
+/*package com.kn.auth.config;
+
+import java.io.IOException;
 
 import org.springframework.stereotype.Component;
 
@@ -10,8 +12,6 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletResponse;
 
-import java.io.IOException;
-
 @Component
 public class CorsFilter implements Filter {
 
@@ -19,6 +19,8 @@ public class CorsFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         httpResponse.addHeader("Access-Control-Allow-Origin", "*"); // Allow requests from all origins
+        httpResponse.addHeader("Access-Control-Allow-Methods", "*");
+        httpResponse.addHeader("Access-Control-Allow-Headers", "*");
         chain.doFilter(request, response);
     }
 
@@ -32,4 +34,4 @@ public class CorsFilter implements Filter {
         // Cleanup code, if needed
     }
 }
-
+*/

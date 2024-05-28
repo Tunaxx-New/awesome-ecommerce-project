@@ -45,16 +45,17 @@ services:
       - db
       
   minio:
-    image: minio/minio
+    image: minio/minio:latest
     container_name: minio
     ports:
       - "9000:9000"
+      - "9001:9001"
     environment:
       MINIO_ACCESS_KEY: minioaccesskey
       MINIO_SECRET_KEY: miniosecretkey
     volumes:
       - minio-dev:/data
-    command: server /data
+    command: ["server", "--console-address", ":9001", "/data"]
 
 volumes:
   db-dev:
