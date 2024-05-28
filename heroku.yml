@@ -1,1 +1,3 @@
-worker: cmd /c ./docker/development.bat
+release:
+  command:
+    - ./docker/development.sh
