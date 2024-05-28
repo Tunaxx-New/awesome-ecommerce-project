@@ -1,3 +1,25 @@
+build:
+  docker:
+    spring: ./service/Authorization/service/dev.Dockerfile
+    db: ./service/Authorization/db/dev.Dockerfile
+    db-backup: ./service/Authorization/db/mysql-backup.Dockerfile
+    minio: .
+
 release:
-  command:
-    - ./docker/development.sh
+  image: ./service/Authorization/service
+
+run:
+  spring: java -jar app.jar
+  db: mysqld --mysql-native-password=ON
+  db-backup: sh backup_script.sh
+  minio: minio server /data
+
+env:
+  MYSQL_ROOT_HOST: localhost
+  MYSQL_ROOT_PASSWORD: admin
+  MYSQL_DATABASE: db
+  MYSQL_ADMIN: admin
+  MYSQL_ADMIN_PASSWORD: admin
+  MYSQL_PUBLIC_USER: public
+  MYSQL_FLYWAY_USER: flyway
+  MYSQL_FLYWAY_PASSWORD: flyway
