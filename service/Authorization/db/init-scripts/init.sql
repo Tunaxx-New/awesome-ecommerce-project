@@ -5,16 +5,16 @@ CREATE DATABASE `db`;
 USE `db`;
 
 -- Create a admin and grant privileges
-CREATE USER 'admin'@'172.28.0.1' IDENTIFIED BY 'admin'; -- Create user 172.28.0.1 is?
-GRANT ALL PRIVILEGES ON *.* TO 'admin'@'172.28.0.1'; -- Grant all privileges
+CREATE USER 'admin'@'%' IDENTIFIED BY 'admin'; -- Create user % is?
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%'; -- Grant all privileges
 
 -- Create a flyway and grant privileges
-CREATE USER 'flyway'@'172.28.0.1' IDENTIFIED BY 'flyway';
+CREATE USER 'flyway'@'%' IDENTIFIED BY 'flyway';
 GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER, REFERENCES
-ON `db`.* TO 'flyway'@'172.28.0.1';
+ON `db`.* TO 'flyway'@'%';
 
 -- Create public user
-CREATE USER 'public'@'172.28.0.1';
-GRANT SELECT ON `db`._roles TO 'public'@'172.28.0.1';
+CREATE USER 'public'@'%';
+GRANT SELECT ON `db`._roles TO 'public'@'%';
 
 FLUSH PRIVILEGES; -- Refresh privileges
