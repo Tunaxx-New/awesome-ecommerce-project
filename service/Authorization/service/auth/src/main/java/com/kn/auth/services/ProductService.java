@@ -101,7 +101,7 @@ public class ProductService {
     }
 
     public Product create(Product product, @AuthenticatedId int authenticatedId) {
-        return productRepository.save(Product.builder().seller(sellerService.get(authenticatedId)).build());
+        return productRepository.save(product);
     }
 
     public Product safeCreate(Product product, @AuthenticatedId int authenticatedId) {

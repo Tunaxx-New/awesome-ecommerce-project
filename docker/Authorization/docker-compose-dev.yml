@@ -1,6 +1,14 @@
 version: '3'
 
 services:
+  nginx:
+    build:
+        context: ../../nginx
+        dockerfile: ./dev.Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - spring
   spring:
     build:
         context: ../../service/Authorization/service

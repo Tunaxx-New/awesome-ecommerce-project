@@ -44,7 +44,7 @@ public class ProductController {
     @PostMapping("/private/seller/product/add")
     @Operation(summary = "Seller creates product", description = "Creating product on marketplace")
     public ResponseEntity<Product> add(@RequestBody RequestEntity<Product> product) {
-        return ResponseEntity.status(HttpStatus.OK).body(service.safeCreate(product.getBody(), 0));
+        return ResponseEntity.status(HttpStatus.OK).body(service.create(product.getBody(), 0));
     }
 
     @PostMapping("/private/buyer/product/{id}/review")

@@ -11,6 +11,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 public class Application {
 
+	@Value("${allowed.origins}")
+    	private String[] allowedOrigins;
+
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
@@ -19,7 +22,7 @@ public class Application {
 	public WebMvcConfigurer configure() {
 		return new WebMvcConfigurer() {
 			public void addCorsMappings(CorsRegistry reg) {
-				reg.addMapping("/**").allowCredentials(true).allowedHeaders("*").maxAge(3600).allowedOriginPatterns("*");
+				reg.addMapping("/**").allowCredentials(true).allowedHeaders("*").maxAge(3600).allowedOrigins(allowedOrigins);
 				//reg.addMapping("/**").allowedOrigins("http://localhost:3000").allowCredentials(true).allowedHeaders("*").maxAge(3600);
 			}
 		};
