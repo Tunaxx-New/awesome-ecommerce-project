@@ -8,3 +8,6 @@ docker build --no-cache -t greenshop-dev_service -f dev.Dockerfile .
 // Run container
 docker run --network=greenshop-dev_default -d --name greenshop-dev_service_1 -p 8080:8080 greenshop-dev_service
 
+// Prometheus running
+docker run --network=greenshop-dev_default -d --name prometheus -p 9090:9090 -v $(pwd)/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus:v2.44.0
+
