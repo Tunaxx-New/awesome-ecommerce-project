@@ -22,6 +22,7 @@ import com.kn.auth.requests.AuthenticationRequest;
 import com.kn.auth.requests.ListRequest;
 import com.kn.auth.responses.AuthenticationResponse;
 import com.kn.auth.responses.ErrorResponse;
+import com.kn.auth.responses.ProfileResponse;
 import com.kn.auth.responses.ResponseWrapper;
 import com.kn.auth.services.AuthenticationService;
 import io.jsonwebtoken.JwtException;
@@ -39,7 +40,7 @@ public class AuthenticationController {
         @PostMapping("/private/profile")
         @ResponseBody
         @Operation(summary = "Register new user", description = "Endpoint to register a new user")
-        public ResponseEntity<Authentication> profile() {
+        public ResponseEntity<ProfileResponse> profile() {
                 return ResponseEntity.status(HttpStatus.OK).body(service.findByAspectId(0));
         }
 

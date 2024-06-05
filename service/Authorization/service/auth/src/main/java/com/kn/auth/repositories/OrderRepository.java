@@ -1,5 +1,6 @@
 package com.kn.auth.repositories;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Pageable;
@@ -13,6 +14,7 @@ import com.kn.auth.models.Order;
 
 public interface OrderRepository extends JpaRepository<Order, Integer> {
     Page<Order> findAllByBuyerId(int buyerId, Pageable pageable);
+    Optional<List<Order>> findAllByBuyerId(int buyerId);
 
     @Query(value = "SELECT or.* FROM " + TableNameConstants.ORDER + " or "
             + "JOIN " + TableNameConstants.BUYERS + " b ON or.buyer_id = b.id "

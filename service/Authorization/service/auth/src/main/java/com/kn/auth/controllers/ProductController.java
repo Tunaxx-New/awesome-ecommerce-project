@@ -35,7 +35,7 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).body(service.getAll(pageable));
     }
 
-    @GetMapping("/public/product/{id}")
+    @GetMapping("/public/product/")
     @Operation(summary = "Getting list of products", description = "Getting specific product")
     public ResponseEntity<Product> get(@RequestParam(name = "id", required = true) int productId) {
         return ResponseEntity.status(HttpStatus.OK).body(service.get(productId));
@@ -47,14 +47,14 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).body(service.create(product.getBody(), 0));
     }
 
-    @PostMapping("/private/buyer/product/{id}/review")
+    @PostMapping("/private/buyer/product/id/review")
     @Operation(summary = "Make review on product", description = "Checks if buyer reviewed product and add review")
     public ResponseEntity<ProductReview> reviewOrder(@RequestBody RequestEntity<ProductReview> review,
             @RequestParam(name = "id", required = true) int productId) {
         return ResponseEntity.status(HttpStatus.OK).body(service.review(review.getBody(), productId, 0));
     }
 
-    @GetMapping("/private/buyer/product/{id}/orders")
+    @GetMapping("/private/buyer/product/id/orders")
     @Operation(summary = "Getting transparency order history", description = "Returns orders history that accepted by seller transparency policy")
     public ResponseEntity<List<Order>> orders(@RequestParam(name = "id", required = true) int productId) {
         return ResponseEntity.status(HttpStatus.OK).body(service.orders(productId));

@@ -71,6 +71,16 @@ public class OrderService {
 
                         List<TransparentPolicy> buyerTransparentPolicies = new ArrayList<>(cart.getBuyer().getAuthentication().getAuthenticationTransparentPolicies());
                         List<TransparentPolicy> sellerTransparentPolicies = new ArrayList<>(cartItem.getProduct().getSeller().getAuthentication().getAuthenticationTransparentPolicies());
+                        for (TransparentPolicy policy : buyerTransparentPolicies) {
+                                policy.setAuthentications(null);
+                                policy.setBuyerOrders(null);
+                                policy.setSellerOrders(null);
+                        }
+                        for (TransparentPolicy policy : sellerTransparentPolicies) {
+                                policy.setAuthentications(null);
+                                policy.setBuyerOrders(null);
+                                policy.setSellerOrders(null);
+                        }
                         orderItems.add(OrderItem.builder()
                                         .amount(cartItem.getAmount())
                                         .order(order)
@@ -87,10 +97,21 @@ public class OrderService {
                 if (orderItems.size() == 0)
                         throw new RuntimeException("Order items is empty");
 
+
                 Order createdOrder = orderRepository.save(order);
+
+                for (OrderItem orderItem : orderItems) {
+                        Order order_ = orderItem.getOrder();
+                        order_.setBuyer(Buyer.builder().id(order_.getBuyer().getId()).build());
+                        orderItem.setOrder(order_);
+                }
                 List<OrderItem> createdOrderItems = orderItemService.createMany(orderItems);
+
+
                 cartService.clear(authenticationId);
-                createdOrder.setOrderItems(createdOrderItems);
+
+                //createdOrder.setOrderItems(createdOrderItems);
+                //createdOrder.setBuyer(null);
                 return createdOrder;
         }
 }

@@ -1,10 +1,12 @@
 package com.kn.auth.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -25,12 +27,15 @@ import com.kn.auth.exceptions.PasswordValidationException;
 import com.kn.auth.models.Authentication;
 import com.kn.auth.models.Buyer;
 import com.kn.auth.models.Cart;
+import com.kn.auth.models.Order;
 import com.kn.auth.models.Seller;
 import com.kn.auth.models.TransparentPolicy;
 import com.kn.auth.repositories.AuthenticationRepository;
 import com.kn.auth.repositories.BadgeRepository;
+import com.kn.auth.repositories.OrderRepository;
 import com.kn.auth.repositories.RoleRepository;
 import com.kn.auth.repositories.TransparentPolicyRepository;
+import com.kn.auth.responses.ProfileResponse;
 import com.kn.auth.utils.StringUtil;
 import com.kn.auth.validators.EmailValidator;
 import com.kn.auth.validators.PasswordValidator;
@@ -52,6 +57,7 @@ public class AuthenticationService {
         private final CartService cartService;
         private final DatabaseService databaseService;
         private final RoleRepository roleRepository;
+        private final OrderRepository orderRepository;
 
         @Autowired
         private final PasswordEncoder passwordEncoder;
@@ -176,8 +182,33 @@ public class AuthenticationService {
          *                        token
          * @return Authentication found user by id
          */
-        public Authentication findByAspectId(@AuthenticatedId int authenticatedId) {
-                return authenticationRepository.findById(authenticatedId).get();
+        public ProfileResponse findByAspectId(@AuthenticatedId int authenticatedId) {
+                Authentication profile = authenticationRepository.findById(authenticatedId).get();
+                List<TransparentPolicy> buyerTransparentPolicies = new ArrayList<>(
+                                profile.getAuthenticationTransparentPolicies());
+                if (buyerTransparentPolicies.stream().anyMatch(policy -> {
+                        return policy.getName().getValue().equals(
+                                        com.kn.auth.enums.TransparentPolicy.AVAILABLE_PRODUCT_ORDERS.getValue());
+                })) {
+                        List<Order> orders = new ArrayList<>();
+                        boolean isDate = buyerTransparentPolicies.stream().anyMatch(policy -> {
+                                return policy.getName().getValue().equals(
+                                                com.kn.auth.enums.TransparentPolicy.AVAILABLE_PRODUCT_ORDERS_DATE
+                                                                .getValue());
+                        });
+                        List<Order> orders_ = orderRepository.findAllByBuyerId(profile.getBuyer().getId()).get();
+                        for (Order order : orders_) {
+                                if (!isDate)
+                                        order.setCreatedTime(null);
+                                order.setShippingAddress(null);
+                                order.setPaymentMethod(null);
+                                order.setBuyer(null);
+                                orders.add(order);
+                        }
+                        System.out.println(orders.size() + "TUNAXX");
+                        profile.getBuyer().setOrders(orders);
+                }
+                return ProfileResponse.builder().authentication(profile).orders(profile.getBuyer().getOrders()).build();
         }
 
         public List<TransparentPolicy> changeTransparentPolicies(List<TransparentPolicy> transparentPolicies,

@@ -66,11 +66,13 @@ public class OrderItem {
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "order_item_buyer_transparent_policy", joinColumns = @JoinColumn(name = "buyer_order_item_id"), inverseJoinColumns = @JoinColumn(name = "buyer_transparent_policy_id"))
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private List<TransparentPolicy> buyerTransparentPolicies;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "order_item_seller_transparent_policy", joinColumns = @JoinColumn(name = "seller_order_item_id"), inverseJoinColumns = @JoinColumn(name = "seller_transparent_policy_id"))
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private List<TransparentPolicy> sellerTransparentPolicies;
 
     @CreationTimestamp
