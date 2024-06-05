@@ -1,10 +1,14 @@
 package com.kn.auth.controllers;
 
+import org.hibernate.Hibernate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 import com.kn.auth.repositories.CategoryRepository;
 import com.kn.auth.repositories.PaymentMethodRepository;
@@ -30,16 +34,21 @@ public class MetadataController {
     private final TagRepository tagRepository;
     private final TransparentPolicyRepository transparentPolicyRepository;
 
-    @GetMapping("/metadata")
+    @PostMapping("/metadata")
     @Operation(summary = "Getting info", description = "Return constants")
     public ResponseEntity<MetadataResponse> test() {
         return ResponseEntity.status(HttpStatus.OK).body(MetadataResponse.builder()
-                .roles(roleRepository.findAll())
-                .categories(categoryRepository.findAll())
-                .paymentMethods(paymentMethodRepository.findAll())
-                .shippingAddresses(shippingAddressRepository.findAll())
-                .tags(tagRepository.findAll())
-                .transparentPolicies(transparentPolicyRepository.findAll())
+                .roles(detachEntities(roleRepository.findAll()))
+                .categories(detachEntities(categoryRepository.findAll()))
+                .paymentMethods(detachEntities(paymentMethodRepository.findAll()))
+                .shippingAddresses(detachEntities(shippingAddressRepository.findAll()))
+                .tags(detachEntities(tagRepository.findAll()))
+                .transparentPolicies(detachEntities(transparentPolicyRepository.findAll()))
                 .build());
+    }
+
+    private <T> List<T> detachEntities(List<T> entities) {
+        entities.forEach(entity -> Hibernate.unproxy(entity));
+        return entities;
     }
 }

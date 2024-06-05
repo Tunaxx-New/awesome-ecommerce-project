@@ -4,7 +4,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kn.auth.annotations.AuthenticatedEmail;
+import com.kn.auth.models.Badge;
+import com.kn.auth.models.Buyer;
 import com.kn.auth.models.CartItem;
+import com.kn.auth.repositories.BadgeRepository;
 import com.kn.auth.repositories.CartItemRepository;
 import java.util.List;
 
@@ -15,12 +18,28 @@ import lombok.RequiredArgsConstructor;
 public class CartItemService {
 
     private final CartItemRepository cartItemRepository;
+    private final BuyerService buyerService;
+    private final BadgeRepository badgeRepository;
 
     /**
      * @param shippingAddress
      * @return CartItem
      */
     public CartItem create(CartItem cartItem) {
+
+        // Adding first product badge
+        if (cartItemRepository.findAllByCartId(cartItem.getCart().getId()).get().size() == 0) {
+            Buyer buyer = buyerService.getByAuthenticationId(cartItem.getCart().getBuyer().getAuthentication().getId());
+            List<Badge> badges = buyer.getBadges();
+            if (badges.stream().allMatch(badge -> {
+                return !badge.getId().equals(4);
+            })) {
+                badges.add(badgeRepository.findById(4).get());
+                buyer.setBadges(badges);
+                buyerService.update(buyer);
+            }
+        }
+
         return cartItemRepository.save(cartItem);
     }
 

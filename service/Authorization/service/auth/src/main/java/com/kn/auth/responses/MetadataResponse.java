@@ -18,7 +18,6 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

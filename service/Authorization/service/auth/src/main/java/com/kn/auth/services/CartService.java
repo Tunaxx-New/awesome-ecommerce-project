@@ -3,6 +3,8 @@ package com.kn.auth.services;
 import org.springframework.stereotype.Service;
 
 import com.kn.auth.annotations.AuthenticatedId;
+import com.kn.auth.models.Badge;
+import com.kn.auth.models.Buyer;
 import com.kn.auth.models.Cart;
 import com.kn.auth.models.CartItem;
 import com.kn.auth.models.Product;
@@ -55,6 +57,7 @@ public class CartService {
             sameProductCartItem.setAmount(cartItem.getAmount() + sameProductCartItem.getAmount());
             return cartItemService.create(sameProductCartItem);
         }
+
         return cartItemService.create(cartItem);
     }
 

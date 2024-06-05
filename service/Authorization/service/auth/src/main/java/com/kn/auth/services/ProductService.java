@@ -9,12 +9,14 @@ import org.springframework.stereotype.Service;
 
 import com.kn.auth.annotations.AuthenticatedId;
 import com.kn.auth.enums.TransparentPolicy;
+import com.kn.auth.models.Badge;
 import com.kn.auth.models.Buyer;
 import com.kn.auth.models.Order;
 import com.kn.auth.models.OrderItem;
 import com.kn.auth.models.Product;
 import com.kn.auth.models.ProductReview;
 import com.kn.auth.models.Seller;
+import com.kn.auth.repositories.BadgeRepository;
 import com.kn.auth.repositories.ProductRepository;
 import com.kn.auth.repositories.ProductReviewRepository;
 
@@ -31,6 +33,8 @@ public class ProductService {
     private final SellerService sellerService;
     private final BuyerService buyerService;
     private final OrderItemService orderItemService;
+
+    private final BadgeRepository badgeRepository;
 
     public ProductReview review(ProductReview productReview, int productId, @AuthenticatedId int authenticatedId) {
         Buyer buyer = buyerService.getByAuthenticationId(authenticatedId);
@@ -63,11 +67,13 @@ public class ProductService {
         return productRepository.findById(productId).get().getOrderItems().stream()
                 .map(orderItem -> {
                     Order order = orderItem.getOrder();
-                    List<com.kn.auth.enums.TransparentPolicy> sellerTransparentPolicies = orderItem.getSellerTransparentPolicies()
+                    List<com.kn.auth.enums.TransparentPolicy> sellerTransparentPolicies = orderItem
+                            .getSellerTransparentPolicies()
                             .stream()
                             .map(transparentPolicy -> transparentPolicy.getName())
                             .collect(Collectors.toList());
-                    List<com.kn.auth.enums.TransparentPolicy> buyerTransparentPolicies = orderItem.getBuyerTransparentPolicies()
+                    List<com.kn.auth.enums.TransparentPolicy> buyerTransparentPolicies = orderItem
+                            .getBuyerTransparentPolicies()
                             .stream()
                             .map(transparentPolicy -> transparentPolicy.getName())
                             .collect(Collectors.toList());
@@ -101,6 +107,16 @@ public class ProductService {
     }
 
     public Product create(Product product, @AuthenticatedId int authenticatedId) {
+        // Adding first product badge
+        if (productRepository.findAllBySellerId(product.getSeller().getId()).get().size() == 0) {
+            Buyer buyer = buyerService.getByAuthenticationId(authenticatedId);
+            List<Badge> badges = buyer.getBadges();
+            Badge badge = badgeRepository.findById(3).get();
+            //badge.setDescription(badge.getDescription() + "~" + product.getId());
+            badges.add(badge);
+            buyer.setBadges(badges);
+            buyerService.update(buyer);
+        }
         return productRepository.save(product);
     }
 
