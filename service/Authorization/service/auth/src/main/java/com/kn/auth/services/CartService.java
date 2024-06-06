@@ -77,21 +77,24 @@ public class CartService {
                     cartItem.setAmount(0);
 
                 // Collapse items with same product items
-                if (productIds.contains(cartItem.getProduct().getId())) {
+                if (productIds.contains(actualCartItem.getProduct().getId())) {
                     for (CartItem uniqueCartItem : uniqueCartItems)
-                        if (uniqueCartItem.getProduct().getId().equals(cartItem.getProduct().getId()))
+                        if (uniqueCartItem.getProduct().getId().equals(actualCartItem.getProduct().getId()))
                             uniqueCartItem.setAmount(uniqueCartItem.getAmount() + cartItem.getAmount());
                 } else {
-                    productIds.add(cartItem.getProduct().getId());
+                    /*
                     uniqueCartItems.add(CartItem.builder()
+                            .id(cartItem.getId())
                             .amount(cartItem.getAmount())
                             .cart(cart)
                             .product(Product.builder().id(cartItem.getProduct().getId()).build())
                             .build());
+                    */
+                    uniqueCartItems.add(actualCartItem);
                 }
             }
         }
-        cartItemService.deleteAllByCartId(cart.getId());
+        //cartItemService.deleteAllByCartId(cart.getId());
         return cartItemService.updateMany(uniqueCartItems);
     }
 
