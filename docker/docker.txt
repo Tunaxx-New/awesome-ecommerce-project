@@ -1,3 +1,6 @@
+// cd
+cd /home/awesome-ecommerce-project/service/Authorization/service
+
 // Stop container
 docker stop greenshop-dev-service-1
 docker rm greenshop-dev-service-1
