@@ -1,6 +1,6 @@
 // Stop container
-docker stop greenshop-dev_service_1
-docker rm greenshop-dev_service_1
+docker stop greenshop-dev-service-1
+docker rm greenshop-dev-service-1
 // Delete image
 docker rmi greenshop-dev_service
 // Build image
