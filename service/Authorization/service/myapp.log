@@ -731,3 +731,336 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 2024-06-08T01:51:35.649+05:00 DEBUG 13644 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
 2024-06-08T01:51:35.697+05:00 DEBUG 13644 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [java.lang.StackOverflowError]
 2024-06-08T01:51:39.678+05:00 DEBUG 13644 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-08T02:11:48.604+05:00  INFO 11768 --- [main] com.kn.auth.Application                  : Starting Application using Java 17.0.9 with PID 11768 (C:\Users\User\IdeaProjects\MarketPlace\awesome-ecommerce-project\service\Authorization\service\auth\build\classes\java\main started by User in C:\Users\User\IdeaProjects\MarketPlace\awesome-ecommerce-project\service\Authorization\service)
+2024-06-08T02:11:48.608+05:00  INFO 11768 --- [main] com.kn.auth.Application                  : No active profile set, falling back to 1 default profile: "default"
+2024-06-08T02:11:50.737+05:00  INFO 11768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-08T02:11:50.934+05:00  INFO 11768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 182 ms. Found 19 JPA repository interfaces.
+2024-06-08T02:11:52.637+05:00  INFO 11768 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-06-08T02:11:52.656+05:00  INFO 11768 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-08T02:11:52.657+05:00  INFO 11768 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2024-06-08T02:11:52.831+05:00  INFO 11768 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-06-08T02:11:52.833+05:00  INFO 11768 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4137 ms
+2024-06-08T02:11:53.516+05:00  INFO 11768 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.16.3 by Redgate
+2024-06-08T02:11:53.517+05:00  INFO 11768 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-06-08T02:11:53.517+05:00  INFO 11768 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-06-08T02:11:55.334+05:00  INFO 11768 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://104.248.234.194:3306/db (MySQL 8.4)
+2024-06-08T02:11:57.116+05:00  WARN 11768 --- [main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: MySQL 8.4 is newer than this version of Flyway and support has not been tested. The latest supported version of MySQL is 8.0.
+2024-06-08T02:11:58.373+05:00  INFO 11768 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 6 migrations (execution time 00:01.068s)
+2024-06-08T02:12:00.294+05:00  INFO 11768 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `db`: 1.0.5
+2024-06-08T02:12:00.468+05:00  INFO 11768 --- [main] o.f.core.internal.command.DbMigrate      : Schema `db` is up to date. No migration necessary.
+2024-06-08T02:12:01.705+05:00  INFO 11768 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-08T02:12:01.842+05:00  INFO 11768 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2024-06-08T02:12:01.848+05:00  INFO 11768 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-06-08T02:12:02.727+05:00  INFO 11768 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-08T02:12:02.812+05:00  INFO 11768 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-08T02:12:04.585+05:00  INFO 11768 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@28e8dee7
+2024-06-08T02:12:04.585+05:00  INFO 11768 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-08T02:12:05.044+05:00  WARN 11768 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-08T02:12:06.040+05:00  WARN 11768 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.schema-generation.scripts.action], use [jakarta.persistence.schema-generation.scripts.action] instead
+2024-06-08T02:12:07.709+05:00  INFO 11768 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-08T02:12:07.716+05:00  WARN 11768 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.schema-generation.scripts.action], use [jakarta.persistence.schema-generation.scripts.action] instead
+2024-06-08T02:12:07.728+05:00  WARN 11768 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [jakarta.persistence.schema-generation.scripts.drop-target], use [javax.persistence.schema-generation.scripts.drop-target] instead
+2024-06-08T02:12:07.751+05:00  WARN 11768 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [jakarta.persistence.schema-generation.scripts.create-target], use [javax.persistence.schema-generation.scripts.create-target] instead
+2024-06-08T02:12:07.783+05:00  INFO 11768 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-08T02:12:08.981+05:00 DEBUG 11768 --- [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-06-08T02:12:09.550+05:00  INFO 11768 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-08T02:12:11.955+05:00  WARN 11768 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-08T02:12:12.360+05:00 DEBUG 11768 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 41 mappings in 'requestMappingHandlerMapping'
+2024-06-08T02:12:12.906+05:00 DEBUG 11768 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-06-08T02:12:13.215+05:00  INFO 11768 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoint(s) beneath base path '/actuator'
+2024-06-08T02:12:13.321+05:00  INFO 11768 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@283b462d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4dea8205, org.springframework.security.web.context.SecurityContextHolderFilter@67288f31, org.springframework.security.web.header.HeaderWriterFilter@33d1d1ef, org.springframework.security.web.authentication.logout.LogoutFilter@3bee3935, com.kn.auth.config.JwtAuthenticationFilter@232bfb3c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@16bc9213, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5bcaebdb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6266f63c, org.springframework.security.web.session.SessionManagementFilter@76b24f7b, org.springframework.security.web.access.ExceptionTranslationFilter@50ea6110, org.springframework.security.web.access.intercept.AuthorizationFilter@53ae8844]
+2024-06-08T02:12:13.531+05:00 DEBUG 11768 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-06-08T02:12:13.695+05:00 DEBUG 11768 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-06-08T02:12:14.572+05:00  INFO 11768 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
+2024-06-08T02:12:14.596+05:00  INFO 11768 --- [main] com.kn.auth.Application                  : Started Application in 26.667 seconds (process running for 28.179)
+2024-06-08T02:13:00.855+05:00  INFO 11768 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-08T02:13:00.855+05:00  INFO 11768 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-08T02:13:00.870+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-06-08T02:13:00.872+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-06-08T02:13:00.872+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-06-08T02:13:00.877+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@451b7faf
+2024-06-08T02:13:00.879+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@4effd9f8
+2024-06-08T02:13:00.881+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-06-08T02:13:00.882+05:00  INFO 11768 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 27 ms
+2024-06-08T02:13:08.275+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:13:08.275+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:13:08.275+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:13:08.275+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:13:08.275+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:13:08.283+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:13:08.285+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:13:08.295+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/private/profile", parameters={}
+2024-06-08T02:13:08.298+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:13:16.511+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-06-08T02:13:16.542+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [java.lang.StackOverflowError]
+2024-06-08T02:13:20.440+05:00 DEBUG 11768 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-08T02:14:47.330+05:00  INFO 5300 --- [main] com.kn.auth.Application                  : Starting Application using Java 17.0.9 with PID 5300 (C:\Users\User\IdeaProjects\MarketPlace\awesome-ecommerce-project\service\Authorization\service\auth\build\classes\java\main started by User in C:\Users\User\IdeaProjects\MarketPlace\awesome-ecommerce-project\service\Authorization\service)
+2024-06-08T02:14:47.334+05:00  INFO 5300 --- [main] com.kn.auth.Application                  : No active profile set, falling back to 1 default profile: "default"
+2024-06-08T02:14:49.512+05:00  INFO 5300 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-08T02:14:49.714+05:00  INFO 5300 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 182 ms. Found 19 JPA repository interfaces.
+2024-06-08T02:14:51.367+05:00  INFO 5300 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-06-08T02:14:51.386+05:00  INFO 5300 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-08T02:14:51.387+05:00  INFO 5300 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2024-06-08T02:14:51.563+05:00  INFO 5300 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-06-08T02:14:51.565+05:00  INFO 5300 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4138 ms
+2024-06-08T02:14:52.234+05:00  INFO 5300 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.16.3 by Redgate
+2024-06-08T02:14:52.235+05:00  INFO 5300 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-06-08T02:14:52.236+05:00  INFO 5300 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-06-08T02:14:54.149+05:00  INFO 5300 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://104.248.234.194:3306/db (MySQL 8.4)
+2024-06-08T02:14:55.945+05:00  WARN 5300 --- [main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: MySQL 8.4 is newer than this version of Flyway and support has not been tested. The latest supported version of MySQL is 8.0.
+2024-06-08T02:14:57.207+05:00  INFO 5300 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 6 migrations (execution time 00:01.080s)
+2024-06-08T02:14:59.121+05:00  INFO 5300 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `db`: 1.0.5
+2024-06-08T02:14:59.292+05:00  INFO 5300 --- [main] o.f.core.internal.command.DbMigrate      : Schema `db` is up to date. No migration necessary.
+2024-06-08T02:15:00.528+05:00  INFO 5300 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-08T02:15:00.694+05:00  INFO 5300 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2024-06-08T02:15:00.700+05:00  INFO 5300 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-06-08T02:15:01.330+05:00  INFO 5300 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-08T02:15:01.392+05:00  INFO 5300 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-08T02:15:03.162+05:00  INFO 5300 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3f142e87
+2024-06-08T02:15:03.164+05:00  INFO 5300 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-08T02:15:03.562+05:00  WARN 5300 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-08T02:15:04.314+05:00  WARN 5300 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.schema-generation.scripts.action], use [jakarta.persistence.schema-generation.scripts.action] instead
+2024-06-08T02:15:05.675+05:00  INFO 5300 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-08T02:15:05.681+05:00  WARN 5300 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.schema-generation.scripts.action], use [jakarta.persistence.schema-generation.scripts.action] instead
+2024-06-08T02:15:05.688+05:00  WARN 5300 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [jakarta.persistence.schema-generation.scripts.drop-target], use [javax.persistence.schema-generation.scripts.drop-target] instead
+2024-06-08T02:15:05.710+05:00  WARN 5300 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [jakarta.persistence.schema-generation.scripts.create-target], use [javax.persistence.schema-generation.scripts.create-target] instead
+2024-06-08T02:15:05.736+05:00  INFO 5300 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-08T02:15:06.870+05:00 DEBUG 5300 --- [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-06-08T02:15:07.520+05:00  INFO 5300 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-08T02:15:11.304+05:00  WARN 5300 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-08T02:15:11.777+05:00 DEBUG 5300 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 41 mappings in 'requestMappingHandlerMapping'
+2024-06-08T02:15:12.665+05:00 DEBUG 5300 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-06-08T02:15:13.267+05:00  INFO 5300 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoint(s) beneath base path '/actuator'
+2024-06-08T02:15:13.396+05:00  INFO 5300 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@56d96ef4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4bfdd751, org.springframework.security.web.context.SecurityContextHolderFilter@7bb8ede7, org.springframework.security.web.header.HeaderWriterFilter@604201a0, org.springframework.security.web.authentication.logout.LogoutFilter@1c55db35, com.kn.auth.config.JwtAuthenticationFilter@17734113, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6280829f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1ac81de1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5ba34ac0, org.springframework.security.web.session.SessionManagementFilter@1a4f3538, org.springframework.security.web.access.ExceptionTranslationFilter@30ad845d, org.springframework.security.web.access.intercept.AuthorizationFilter@2da21a9b]
+2024-06-08T02:15:13.711+05:00 DEBUG 5300 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-06-08T02:15:13.848+05:00 DEBUG 5300 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-06-08T02:15:14.634+05:00  INFO 5300 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
+2024-06-08T02:15:14.665+05:00  INFO 5300 --- [main] com.kn.auth.Application                  : Started Application in 27.992 seconds (process running for 29.112)
+2024-06-08T02:15:21.835+05:00  INFO 5300 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-08T02:15:21.837+05:00  INFO 5300 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-08T02:15:21.838+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-06-08T02:15:21.838+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-06-08T02:15:21.839+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-06-08T02:15:21.840+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@2913f3ca
+2024-06-08T02:15:21.841+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@6a38a87c
+2024-06-08T02:15:21.842+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-06-08T02:15:21.843+05:00  INFO 5300 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2024-06-08T02:15:29.263+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:15:29.271+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:15:29.276+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:15:29.279+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:15:29.283+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:15:29.287+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:15:29.291+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:15:29.310+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/private/profile", parameters={}
+2024-06-08T02:15:29.317+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:15:37.554+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-06-08T02:15:37.587+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [java.lang.StackOverflowError]
+2024-06-08T02:15:41.608+05:00 DEBUG 5300 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-08T02:17:59.861+05:00  INFO 16500 --- [main] com.kn.auth.Application                  : Starting Application using Java 17.0.9 with PID 16500 (C:\Users\User\IdeaProjects\MarketPlace\awesome-ecommerce-project\service\Authorization\service\auth\build\classes\java\main started by User in C:\Users\User\IdeaProjects\MarketPlace\awesome-ecommerce-project\service\Authorization\service)
+2024-06-08T02:17:59.867+05:00  INFO 16500 --- [main] com.kn.auth.Application                  : No active profile set, falling back to 1 default profile: "default"
+2024-06-08T02:18:02.109+05:00  INFO 16500 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-08T02:18:02.366+05:00  INFO 16500 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 233 ms. Found 19 JPA repository interfaces.
+2024-06-08T02:18:04.031+05:00  INFO 16500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-06-08T02:18:04.056+05:00  INFO 16500 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-08T02:18:04.057+05:00  INFO 16500 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2024-06-08T02:18:04.256+05:00  INFO 16500 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-06-08T02:18:04.256+05:00  INFO 16500 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4266 ms
+2024-06-08T02:18:05.010+05:00  INFO 16500 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.16.3 by Redgate
+2024-06-08T02:18:05.010+05:00  INFO 16500 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-06-08T02:18:05.010+05:00  INFO 16500 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-06-08T02:18:06.904+05:00  INFO 16500 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://104.248.234.194:3306/db (MySQL 8.4)
+2024-06-08T02:18:08.680+05:00  WARN 16500 --- [main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: MySQL 8.4 is newer than this version of Flyway and support has not been tested. The latest supported version of MySQL is 8.0.
+2024-06-08T02:18:09.929+05:00  INFO 16500 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 6 migrations (execution time 00:01.066s)
+2024-06-08T02:18:11.838+05:00  INFO 16500 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `db`: 1.0.5
+2024-06-08T02:18:12.011+05:00  INFO 16500 --- [main] o.f.core.internal.command.DbMigrate      : Schema `db` is up to date. No migration necessary.
+2024-06-08T02:18:13.237+05:00  INFO 16500 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-08T02:18:13.380+05:00  INFO 16500 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2024-06-08T02:18:13.387+05:00  INFO 16500 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-06-08T02:18:14.035+05:00  INFO 16500 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-08T02:18:14.104+05:00  INFO 16500 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-08T02:18:15.902+05:00  INFO 16500 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@62159fd
+2024-06-08T02:18:15.910+05:00  INFO 16500 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-08T02:18:16.325+05:00  WARN 16500 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-08T02:18:17.117+05:00  WARN 16500 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.schema-generation.scripts.action], use [jakarta.persistence.schema-generation.scripts.action] instead
+2024-06-08T02:18:18.528+05:00  INFO 16500 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-08T02:18:18.535+05:00  WARN 16500 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.schema-generation.scripts.action], use [jakarta.persistence.schema-generation.scripts.action] instead
+2024-06-08T02:18:18.542+05:00  WARN 16500 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [jakarta.persistence.schema-generation.scripts.drop-target], use [javax.persistence.schema-generation.scripts.drop-target] instead
+2024-06-08T02:18:18.559+05:00  WARN 16500 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [jakarta.persistence.schema-generation.scripts.create-target], use [javax.persistence.schema-generation.scripts.create-target] instead
+2024-06-08T02:18:18.588+05:00  INFO 16500 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-08T02:18:19.833+05:00 DEBUG 16500 --- [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-06-08T02:18:20.521+05:00  INFO 16500 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-08T02:18:23.107+05:00  WARN 16500 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-08T02:18:23.630+05:00 DEBUG 16500 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 41 mappings in 'requestMappingHandlerMapping'
+2024-06-08T02:18:24.176+05:00 DEBUG 16500 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-06-08T02:18:24.543+05:00  INFO 16500 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoint(s) beneath base path '/actuator'
+2024-06-08T02:18:24.657+05:00  INFO 16500 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4919cfcf, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@15a26fcc, org.springframework.security.web.context.SecurityContextHolderFilter@43c1dcb0, org.springframework.security.web.header.HeaderWriterFilter@56b0f44f, org.springframework.security.web.authentication.logout.LogoutFilter@72a4b564, com.kn.auth.config.JwtAuthenticationFilter@119d21ce, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@607229c7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@48f1968e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@73d0d431, org.springframework.security.web.session.SessionManagementFilter@7524241d, org.springframework.security.web.access.ExceptionTranslationFilter@6818550d, org.springframework.security.web.access.intercept.AuthorizationFilter@753e5e51]
+2024-06-08T02:18:24.883+05:00 DEBUG 16500 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-06-08T02:18:25.056+05:00 DEBUG 16500 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-06-08T02:18:25.747+05:00  INFO 16500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
+2024-06-08T02:18:25.765+05:00  INFO 16500 --- [main] com.kn.auth.Application                  : Started Application in 26.599 seconds (process running for 27.387)
+2024-06-08T02:18:34.116+05:00  INFO 16500 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-08T02:18:34.117+05:00  INFO 16500 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-08T02:18:34.118+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-06-08T02:18:34.118+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-06-08T02:18:34.119+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-06-08T02:18:34.121+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@f124162
+2024-06-08T02:18:34.123+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@7d207bee
+2024-06-08T02:18:34.124+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-06-08T02:18:34.125+05:00  INFO 16500 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2024-06-08T02:18:41.677+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:18:41.686+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:18:41.688+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:18:41.689+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:18:41.691+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:18:41.693+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:18:41.694+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:18:41.727+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/private/profile", parameters={}
+2024-06-08T02:18:41.730+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:18:50.044+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-06-08T02:18:50.077+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [java.lang.StackOverflowError]
+2024-06-08T02:18:54.045+05:00 DEBUG 16500 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-08T02:21:59.677+05:00 DEBUG 16500 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.OrderController#list(Pageable)
+2024-06-08T02:21:59.680+05:00 DEBUG 16500 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.OrderController#list(Pageable)
+2024-06-08T02:21:59.682+05:00 DEBUG 16500 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.OrderController#list(Pageable)
+2024-06-08T02:21:59.683+05:00 DEBUG 16500 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.OrderController#list(Pageable)
+2024-06-08T02:21:59.689+05:00 DEBUG 16500 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/private/buyer/order/list?page=0&size=100", parameters={masked}
+2024-06-08T02:21:59.690+05:00 DEBUG 16500 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.OrderController#list(Pageable)
+2024-06-08T02:22:06.921+05:00 DEBUG 16500 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-06-08T02:22:06.923+05:00 DEBUG 16500 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 0 containing UNKNOWN instances]
+2024-06-08T02:22:06.935+05:00 DEBUG 16500 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-08T02:23:20.180+05:00 DEBUG 16500 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.OrderController#list(Pageable)
+2024-06-08T02:23:20.182+05:00 DEBUG 16500 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.OrderController#list(Pageable)
+2024-06-08T02:23:20.183+05:00 DEBUG 16500 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.OrderController#list(Pageable)
+2024-06-08T02:23:20.184+05:00 DEBUG 16500 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.OrderController#list(Pageable)
+2024-06-08T02:23:20.185+05:00 DEBUG 16500 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/private/buyer/order/list?page=0&size=100", parameters={masked}
+2024-06-08T02:23:20.186+05:00 DEBUG 16500 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.OrderController#list(Pageable)
+2024-06-08T02:23:28.093+05:00 DEBUG 16500 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-06-08T02:23:28.094+05:00 DEBUG 16500 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing com.kn.auth.models.Order instances]
+2024-06-08T02:23:28.101+05:00 DEBUG 16500 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-08T02:26:32.634+05:00  INFO 6024 --- [main] com.kn.auth.Application                  : Starting Application using Java 17.0.9 with PID 6024 (C:\Users\User\IdeaProjects\MarketPlace\awesome-ecommerce-project\service\Authorization\service\auth\build\classes\java\main started by User in C:\Users\User\IdeaProjects\MarketPlace\awesome-ecommerce-project\service\Authorization\service)
+2024-06-08T02:26:32.639+05:00  INFO 6024 --- [main] com.kn.auth.Application                  : No active profile set, falling back to 1 default profile: "default"
+2024-06-08T02:26:34.697+05:00  INFO 6024 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-08T02:26:34.909+05:00  INFO 6024 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 191 ms. Found 19 JPA repository interfaces.
+2024-06-08T02:26:36.981+05:00  INFO 6024 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-06-08T02:26:37.004+05:00  INFO 6024 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-08T02:26:37.004+05:00  INFO 6024 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2024-06-08T02:26:37.203+05:00  INFO 6024 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-06-08T02:26:37.203+05:00  INFO 6024 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4483 ms
+2024-06-08T02:26:37.929+05:00  INFO 6024 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.16.3 by Redgate
+2024-06-08T02:26:37.929+05:00  INFO 6024 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-06-08T02:26:37.930+05:00  INFO 6024 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-06-08T02:26:39.771+05:00  INFO 6024 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://104.248.234.194:3306/db (MySQL 8.4)
+2024-06-08T02:26:41.507+05:00  WARN 6024 --- [main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: MySQL 8.4 is newer than this version of Flyway and support has not been tested. The latest supported version of MySQL is 8.0.
+2024-06-08T02:26:42.770+05:00  INFO 6024 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 6 migrations (execution time 00:01.066s)
+2024-06-08T02:26:44.678+05:00  INFO 6024 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `db`: 1.0.5
+2024-06-08T02:26:44.855+05:00  INFO 6024 --- [main] o.f.core.internal.command.DbMigrate      : Schema `db` is up to date. No migration necessary.
+2024-06-08T02:26:46.078+05:00  INFO 6024 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-08T02:26:46.211+05:00  INFO 6024 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2024-06-08T02:26:46.218+05:00  INFO 6024 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-06-08T02:26:46.756+05:00  INFO 6024 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-08T02:26:46.817+05:00  INFO 6024 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-08T02:26:48.576+05:00  INFO 6024 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@22dc9d46
+2024-06-08T02:26:48.579+05:00  INFO 6024 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-08T02:26:48.964+05:00  WARN 6024 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-08T02:26:49.781+05:00  WARN 6024 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.schema-generation.scripts.action], use [jakarta.persistence.schema-generation.scripts.action] instead
+2024-06-08T02:26:51.100+05:00  INFO 6024 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-08T02:26:51.105+05:00  WARN 6024 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.schema-generation.scripts.action], use [jakarta.persistence.schema-generation.scripts.action] instead
+2024-06-08T02:26:51.115+05:00  WARN 6024 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [jakarta.persistence.schema-generation.scripts.drop-target], use [javax.persistence.schema-generation.scripts.drop-target] instead
+2024-06-08T02:26:51.142+05:00  WARN 6024 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [jakarta.persistence.schema-generation.scripts.create-target], use [javax.persistence.schema-generation.scripts.create-target] instead
+2024-06-08T02:26:51.171+05:00  INFO 6024 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-08T02:26:52.405+05:00 DEBUG 6024 --- [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-06-08T02:26:53.029+05:00  INFO 6024 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-08T02:26:55.596+05:00  WARN 6024 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-08T02:26:55.991+05:00 DEBUG 6024 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 41 mappings in 'requestMappingHandlerMapping'
+2024-06-08T02:26:56.568+05:00 DEBUG 6024 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-06-08T02:26:57.052+05:00  INFO 6024 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoint(s) beneath base path '/actuator'
+2024-06-08T02:26:57.191+05:00  INFO 6024 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@630a32f8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5344604d, org.springframework.security.web.context.SecurityContextHolderFilter@4df207e1, org.springframework.security.web.header.HeaderWriterFilter@79c26be5, org.springframework.security.web.authentication.logout.LogoutFilter@5fcef70b, com.kn.auth.config.JwtAuthenticationFilter@36deacfc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@24411981, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@420da96b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1d3433c7, org.springframework.security.web.session.SessionManagementFilter@6fa53b0d, org.springframework.security.web.access.ExceptionTranslationFilter@2d0529f2, org.springframework.security.web.access.intercept.AuthorizationFilter@76b24f7b]
+2024-06-08T02:26:57.375+05:00 DEBUG 6024 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-06-08T02:26:57.539+05:00 DEBUG 6024 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-06-08T02:26:58.513+05:00  INFO 6024 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
+2024-06-08T02:26:58.540+05:00  INFO 6024 --- [main] com.kn.auth.Application                  : Started Application in 26.577 seconds (process running for 27.406)
+2024-06-08T02:27:22.755+05:00  INFO 6024 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-08T02:27:22.757+05:00  INFO 6024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-08T02:27:22.758+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-06-08T02:27:22.758+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-06-08T02:27:22.758+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-06-08T02:27:22.760+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@dbdc62
+2024-06-08T02:27:22.761+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@a200a54
+2024-06-08T02:27:22.763+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-06-08T02:27:22.765+05:00  INFO 6024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2024-06-08T02:27:30.232+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:27:30.237+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:27:30.240+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:27:30.243+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:27:30.245+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:27:30.247+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:27:30.248+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:27:30.261+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/private/profile", parameters={}
+2024-06-08T02:27:30.265+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:27:39.000+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-06-08T02:27:39.047+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [java.lang.StackOverflowError]
+2024-06-08T02:27:39.980+05:00 DEBUG 6024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-08T02:27:56.296+05:00  INFO 12972 --- [main] com.kn.auth.Application                  : Starting Application using Java 17.0.9 with PID 12972 (C:\Users\User\IdeaProjects\MarketPlace\awesome-ecommerce-project\service\Authorization\service\auth\build\classes\java\main started by User in C:\Users\User\IdeaProjects\MarketPlace\awesome-ecommerce-project\service\Authorization\service)
+2024-06-08T02:27:56.303+05:00  INFO 12972 --- [main] com.kn.auth.Application                  : No active profile set, falling back to 1 default profile: "default"
+2024-06-08T02:27:58.285+05:00  INFO 12972 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-08T02:27:58.524+05:00  INFO 12972 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 220 ms. Found 19 JPA repository interfaces.
+2024-06-08T02:28:00.255+05:00  INFO 12972 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-06-08T02:28:00.283+05:00  INFO 12972 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-08T02:28:00.284+05:00  INFO 12972 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2024-06-08T02:28:00.505+05:00  INFO 12972 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-06-08T02:28:00.506+05:00  INFO 12972 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4113 ms
+2024-06-08T02:28:01.302+05:00  INFO 12972 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.16.3 by Redgate
+2024-06-08T02:28:01.302+05:00  INFO 12972 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-06-08T02:28:01.302+05:00  INFO 12972 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-06-08T02:28:03.177+05:00  INFO 12972 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://104.248.234.194:3306/db (MySQL 8.4)
+2024-06-08T02:28:04.938+05:00  WARN 12972 --- [main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: MySQL 8.4 is newer than this version of Flyway and support has not been tested. The latest supported version of MySQL is 8.0.
+2024-06-08T02:28:06.224+05:00  INFO 12972 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 6 migrations (execution time 00:01.098s)
+2024-06-08T02:28:08.144+05:00  INFO 12972 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `db`: 1.0.5
+2024-06-08T02:28:08.309+05:00  INFO 12972 --- [main] o.f.core.internal.command.DbMigrate      : Schema `db` is up to date. No migration necessary.
+2024-06-08T02:28:09.524+05:00  INFO 12972 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-08T02:28:09.656+05:00  INFO 12972 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2024-06-08T02:28:09.660+05:00  INFO 12972 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-06-08T02:28:10.206+05:00  INFO 12972 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-08T02:28:10.259+05:00  INFO 12972 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-08T02:28:12.030+05:00  INFO 12972 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7c37ac3c
+2024-06-08T02:28:12.047+05:00  INFO 12972 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-08T02:28:12.447+05:00  WARN 12972 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-08T02:28:13.230+05:00  WARN 12972 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.schema-generation.scripts.action], use [jakarta.persistence.schema-generation.scripts.action] instead
+2024-06-08T02:28:14.499+05:00  INFO 12972 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-08T02:28:14.506+05:00  WARN 12972 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.schema-generation.scripts.action], use [jakarta.persistence.schema-generation.scripts.action] instead
+2024-06-08T02:28:14.513+05:00  WARN 12972 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [jakarta.persistence.schema-generation.scripts.drop-target], use [javax.persistence.schema-generation.scripts.drop-target] instead
+2024-06-08T02:28:14.531+05:00  WARN 12972 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [jakarta.persistence.schema-generation.scripts.create-target], use [javax.persistence.schema-generation.scripts.create-target] instead
+2024-06-08T02:28:14.549+05:00  INFO 12972 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-08T02:28:16.168+05:00 DEBUG 12972 --- [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-06-08T02:28:17.052+05:00  INFO 12972 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-08T02:28:19.830+05:00  WARN 12972 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-08T02:28:20.219+05:00 DEBUG 12972 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 41 mappings in 'requestMappingHandlerMapping'
+2024-06-08T02:28:20.820+05:00 DEBUG 12972 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-06-08T02:28:21.150+05:00  INFO 12972 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoint(s) beneath base path '/actuator'
+2024-06-08T02:28:21.272+05:00  INFO 12972 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@32b72d9d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@64231d5d, org.springframework.security.web.context.SecurityContextHolderFilter@670ef436, org.springframework.security.web.header.HeaderWriterFilter@35a0ae34, org.springframework.security.web.authentication.logout.LogoutFilter@230e5de9, com.kn.auth.config.JwtAuthenticationFilter@2603a76d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1970fca2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@16bc9213, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2857f172, org.springframework.security.web.session.SessionManagementFilter@1688ac20, org.springframework.security.web.access.ExceptionTranslationFilter@42122f28, org.springframework.security.web.access.intercept.AuthorizationFilter@7e1e6f28]
+2024-06-08T02:28:21.454+05:00 DEBUG 12972 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-06-08T02:28:21.581+05:00 DEBUG 12972 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-06-08T02:28:22.234+05:00  INFO 12972 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
+2024-06-08T02:28:22.250+05:00  INFO 12972 --- [main] com.kn.auth.Application                  : Started Application in 26.59 seconds (process running for 27.457)
+2024-06-08T02:28:32.795+05:00  INFO 12972 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-08T02:28:32.797+05:00  INFO 12972 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-08T02:28:32.798+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-06-08T02:28:32.798+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-06-08T02:28:32.799+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-06-08T02:28:32.802+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1eb45da0
+2024-06-08T02:28:32.804+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@4dbc47b1
+2024-06-08T02:28:32.806+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-06-08T02:28:32.807+05:00  INFO 12972 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2024-06-08T02:28:40.145+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:28:40.149+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:28:40.151+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:28:40.153+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:28:40.155+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:28:40.159+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:28:40.162+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:28:40.174+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/private/profile", parameters={}
+2024-06-08T02:28:40.180+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-08T02:28:48.922+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-06-08T02:28:48.970+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [java.lang.StackOverflowError]
+2024-06-08T02:28:49.907+05:00 DEBUG 12972 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK

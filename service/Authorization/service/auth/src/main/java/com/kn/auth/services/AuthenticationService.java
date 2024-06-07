@@ -29,6 +29,7 @@ import com.kn.auth.models.Badge;
 import com.kn.auth.models.Buyer;
 import com.kn.auth.models.Cart;
 import com.kn.auth.models.Order;
+import com.kn.auth.models.OrderItem;
 import com.kn.auth.models.Seller;
 import com.kn.auth.models.TransparentPolicy;
 import com.kn.auth.models.TransparentPolicyHistory;
@@ -235,8 +236,10 @@ public class AuthenticationService {
                 }
 
                 Integer buyerId = profile.getBuyer().getId();
-                return ProfileResponse.builder().authentication(profile).orders(orderRepository
-                                .findAllByBuyerId(buyerId, PageRequest.of(0, Integer.MAX_VALUE)).getContent())
+                List<Order> orders = orderRepository
+                                .findAllByBuyerId(buyerId, PageRequest.of(0, Integer.MAX_VALUE)).getContent();
+                                System.out.println(orders.size() + " TUNAXX");
+                return ProfileResponse.builder().authentication(profile).orders(orders)
                                 .build();
         }
 

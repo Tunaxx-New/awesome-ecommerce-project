@@ -9,7 +9,9 @@ import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kn.auth.annotations.SafeToUpdate;
 import com.kn.auth.constants.TableNameConstants;
 import com.kn.auth.models.wrappers.SafeUpdate;
@@ -62,12 +64,16 @@ public class Order extends SafeUpdate<Order> {
     @SafeToUpdate
     @ManyToOne
     @JoinColumn(name = "payment_method_id")
+    @JsonIgnoreProperties("carts")
+    @JsonBackReference
     @OnDelete(action = OnDeleteAction.CASCADE)
     private PaymentMethod paymentMethod;
 
     @SafeToUpdate
     @ManyToOne
     @JoinColumn(name = "shipping_address_id")
+    @JsonIgnoreProperties("carts")
+    @JsonBackReference
     @OnDelete(action = OnDeleteAction.CASCADE)
     private ShippingAddress shippingAddress;
 
