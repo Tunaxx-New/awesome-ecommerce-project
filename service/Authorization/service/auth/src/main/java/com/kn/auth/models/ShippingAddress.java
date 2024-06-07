@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kn.auth.constants.TableNameConstants;
 
 import jakarta.persistence.Column;
@@ -45,10 +46,12 @@ public class ShippingAddress {
 
     @OneToMany(mappedBy = "shippingAddress")
     @JsonIgnore
+    @JsonIgnoreProperties("shippingAddress")
     private List<Cart> carts;
 
     @OneToMany(mappedBy = "shippingAddress")
     @JsonIgnore
+    @JsonIgnoreProperties("shippingAddress")
     private List<Order> orders;
 
     @CreationTimestamp

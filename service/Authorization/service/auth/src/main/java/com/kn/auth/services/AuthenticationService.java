@@ -234,7 +234,10 @@ public class AuthenticationService {
                                                         profile.getTransparentPolicyHistories()));
                 }
 
-                return ProfileResponse.builder().authentication(profile).orders(profile.getBuyer().getOrders()).build();
+                Integer buyerId = profile.getBuyer().getId();
+                return ProfileResponse.builder().authentication(profile).orders(orderRepository
+                                .findAllByBuyerId(buyerId, PageRequest.of(0, Integer.MAX_VALUE)).getContent())
+                                .build();
         }
 
         public List<TransparentPolicy> changeTransparentPolicies(List<TransparentPolicy> transparentPolicies,

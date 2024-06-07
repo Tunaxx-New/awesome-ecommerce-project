@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kn.auth.constants.TableNameConstants;
 
 import jakarta.persistence.Column;
@@ -38,10 +39,12 @@ public class PaymentMethod {
 
     @OneToMany(mappedBy = "paymentMethod")
     @JsonIgnore
+    @JsonIgnoreProperties("paymentMethod")
     private List<Cart> carts;
 
     @OneToMany(mappedBy = "paymentMethod")
     @JsonIgnore
+    @JsonIgnoreProperties("paymentMethod")
     private List<Order> orders;
 
     @CreationTimestamp

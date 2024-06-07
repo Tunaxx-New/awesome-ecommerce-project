@@ -46,7 +46,6 @@ public class ProductReview extends SafeUpdate<ProductReview> {
     @ManyToOne(targetEntity = Buyer.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "buyer_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private Buyer buyer;
 
     @SensetiveData
