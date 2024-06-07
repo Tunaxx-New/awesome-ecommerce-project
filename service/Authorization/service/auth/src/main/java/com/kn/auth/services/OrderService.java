@@ -92,14 +92,18 @@ public class OrderService {
                                 policy.setBuyerOrders(null);
                                 policy.setSellerOrders(null);
                         }
+
+                        Integer commissionPercentage = 0;
+                        commissionPercentage += BadgeService.calculatePercentage(cart.getBuyer());
+                        commissionPercentage += BadgeService.calculatePercentage(cartItem.getProduct().getSeller(),
+                                        cart.getBuyer().getBadges());
+
                         orderItems.add(OrderItem.builder()
                                         .amount(cartItem.getAmount())
                                         .order(order)
                                         .buyerTransparentPolicies(buyerTransparentPolicies)
                                         .sellerTransparentPolicies(sellerTransparentPolicies)
-                                        .commissionPercentage(
-                                                        cartItem.getProduct().getSeller().getCommissionPercentage() +
-                                                                        cart.getBuyer().getCommissionPercentage())
+                                        .commissionPercentage(commissionPercentage)
                                         .product(cartItem.getProduct())
                                         .price(cartItem.getProduct().getPrice())
                                         .build());
@@ -133,7 +137,7 @@ public class OrderService {
                         Buyer buyer = cart.getBuyer();
                         List<Badge> badges = buyer.getBadges();
                         Badge badge = badgeRepository.findById(5).get();
-                        //badge.setDescription(badge.getDescription() + "~" + createdOrder.getId());
+                        // badge.setDescription(badge.getDescription() + "~" + createdOrder.getId());
                         badges.add(badge);
                         buyer.setBadges(badges);
                         buyerService.update(buyer);
@@ -145,7 +149,7 @@ public class OrderService {
                         Buyer buyer = cart.getBuyer();
                         List<Badge> badges = buyer.getBadges();
                         Badge badge = badgeRepository.findById(6).get();
-                        //badge.setDescription(badge.getDescription() + "~" + createdOrder.getId());
+                        // badge.setDescription(badge.getDescription() + "~" + createdOrder.getId());
                         badges.add(badge);
                         buyer.setBadges(badges);
 
@@ -159,8 +163,9 @@ public class OrderService {
                                 Buyer buyer = cart.getBuyer();
                                 List<Badge> badges = buyer.getBadges();
                                 Badge badge = badgeRepository.findById(7).get();
-                                //badge.setDescription(badge.getDescription() + "~" + createdOrder.getId() + "~"
-                                //                + orderItem.getId());
+                                // badge.setDescription(badge.getDescription() + "~" + createdOrder.getId() +
+                                // "~"
+                                // + orderItem.getId());
                                 badges.add(badge);
                                 buyer.setBadges(badges);
                                 buyerService.update(buyer);
@@ -172,7 +177,7 @@ public class OrderService {
                         Buyer buyer = cart.getBuyer();
                         List<Badge> badges = buyer.getBadges();
                         Badge badge = badgeRepository.findById(2).get();
-                        //badge.setDescription(badge.getDescription() + "~" + createdOrder.getId());
+                        // badge.setDescription(badge.getDescription() + "~" + createdOrder.getId());
                         badges.add(badge);
                         buyer.setBadges(badges);
                         buyerService.update(buyer);

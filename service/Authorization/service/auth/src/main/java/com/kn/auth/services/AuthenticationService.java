@@ -25,6 +25,7 @@ import com.kn.auth.exceptions.DatabaseIntegrityUniquenessException;
 import com.kn.auth.exceptions.EmailValidationException;
 import com.kn.auth.exceptions.PasswordValidationException;
 import com.kn.auth.models.Authentication;
+import com.kn.auth.models.Badge;
 import com.kn.auth.models.Buyer;
 import com.kn.auth.models.Cart;
 import com.kn.auth.models.Order;
@@ -39,6 +40,7 @@ import com.kn.auth.responses.ProfileResponse;
 import com.kn.auth.utils.StringUtil;
 import com.kn.auth.validators.EmailValidator;
 import com.kn.auth.validators.PasswordValidator;
+import com.kn.auth.services.BadgeService;
 
 import io.jsonwebtoken.JwtException;
 import lombok.RequiredArgsConstructor;
@@ -208,6 +210,14 @@ public class AuthenticationService {
                         System.out.println(orders.size() + "TUNAXX");
                         profile.getBuyer().setOrders(orders);
                 }
+
+                if (profile.getBuyer() != null)
+                        profile.getBuyer()
+                                        .setCommissionPercentage(BadgeService.calculatePercentage(profile.getBuyer()));
+                if (profile.getSeller() != null)
+                        profile.getSeller().setCommissionPercentage(BadgeService
+                                        .calculatePercentage(profile.getSeller(), profile.getBuyer().getBadges()));
+
                 return ProfileResponse.builder().authentication(profile).orders(profile.getBuyer().getOrders()).build();
         }
 
