@@ -203,9 +203,10 @@ public class BuyerService {
 
             BigDecimal timeDelta = new BigDecimal(
                     getMillisecondsDifferenceToDays(order.getCreatedTime(), previousDate));
-                    if (timeDelta.add(new BigDecimal(1)).compareTo(new BigDecimal(0)) != 0)
-                        retention = retention.add(spendings.subtract(previousSpending).divide(timeDelta.add(new BigDecimal(1)), 10,
-                    RoundingMode.HALF_UP));
+            if (timeDelta.add(new BigDecimal(1)).compareTo(new BigDecimal(0)) != 0)
+                retention = retention
+                        .add(spendings.subtract(previousSpending).divide(timeDelta.add(new BigDecimal(1)), 10,
+                                RoundingMode.HALF_UP));
             if (!spendingsAll.equals(new BigDecimal(0))) {
                 if (spendingsAll.compareTo(new BigDecimal(0)) != 0)
                     retention = retention.divide(spendingsAll, 10, RoundingMode.HALF_UP);
@@ -247,8 +248,11 @@ public class BuyerService {
     }
 
     public static double getMillisecondsDifferenceToDays(LocalDateTime dateTime1, LocalDateTime dateTime2) {
-        double millisecondsInDay = 24 * 60 * 60 * 1000;
-        Duration duration = Duration.between(dateTime1, dateTime2);
-        return ((double) duration.toMillis()) / millisecondsInDay;
+        if (dateTime1 != null && dateTime2 != null) {
+            double millisecondsInDay = 24 * 60 * 60 * 1000;
+            Duration duration = Duration.between(dateTime1, dateTime2);
+            return ((double) duration.toMillis()) / millisecondsInDay;
+        }
+        return 0;
     }
 }
