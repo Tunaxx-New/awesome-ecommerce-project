@@ -151,49 +151,45 @@ public class BuyerService {
                 .sorted(Comparator.comparing(Order::getCreatedTime))
                 .collect(Collectors.toList());
 
-        BigDecimal i = new BigDecimal(1);
-        BigDecimal previousSpending = new BigDecimal(0);
-        BigDecimal previousMargin = new BigDecimal(0);
-        BigDecimal previousDiscount = new BigDecimal(0);
+        BigDecimal i = BigDecimal.ONE;
+        BigDecimal previousSpending = BigDecimal.ZERO;
+        BigDecimal previousMargin = BigDecimal.ZERO;
+        BigDecimal previousDiscount = BigDecimal.ZERO;
         LocalDateTime previousDate = null;
 
         ClvResponse clvResponse = new ClvResponse();
 
-        BigDecimal marginAll = new BigDecimal(0);
-        BigDecimal retentionAll = new BigDecimal(0);
-        BigDecimal discountAll = new BigDecimal(0);
-        BigDecimal spendingsAll = new BigDecimal(0);
+        BigDecimal marginAll = BigDecimal.ZERO;
+        BigDecimal retentionAll = BigDecimal.ZERO;
+        BigDecimal discountAll = BigDecimal.ZERO;
+        BigDecimal spendingsAll = BigDecimal.ZERO;
 
-        for (Order order : sortedDateOrders)
-            for (OrderItem orderItem : order.getOrderItems())
-                spendingsAll = spendingsAll.add(orderItem.getPrice().multiply(new BigDecimal(orderItem.getAmount())));
-        // Each order is time gap
         for (Order order : sortedDateOrders) {
-            i = i.add(new BigDecimal(1));
-            // Margin - average profit generated per transaction
-            BigDecimal margin = new BigDecimal(0);
-            // Retention - retention value
-            BigDecimal retention = new BigDecimal(0);
-            // Discount - retention value
-            BigDecimal discount = new BigDecimal(0);
-
-            BigDecimal spendings = new BigDecimal(0);
-            BigDecimal j = new BigDecimal(0);
             for (OrderItem orderItem : order.getOrderItems()) {
-                // Margin calculation
+                spendingsAll = spendingsAll.add(orderItem.getPrice().multiply(new BigDecimal(orderItem.getAmount())));
+            }
+        }
+
+        for (Order order : sortedDateOrders) {
+            i = i.add(BigDecimal.ONE);
+
+            BigDecimal margin = BigDecimal.ZERO;
+            BigDecimal retention = BigDecimal.ZERO;
+            BigDecimal discount = BigDecimal.ZERO;
+            BigDecimal spendings = BigDecimal.ZERO;
+
+            for (OrderItem orderItem : order.getOrderItems()) {
                 margin = margin.add(orderItem.getPrice()
                         .multiply(new BigDecimal(orderItem.getCommissionPercentage()).divide(new BigDecimal(100), 10,
                                 RoundingMode.HALF_UP))
                         .multiply(new BigDecimal(orderItem.getAmount())));
 
-                // Retention spendings
                 spendings = spendings.add(orderItem.getPrice().multiply(new BigDecimal(orderItem.getAmount())));
 
-                // Discount
                 discount = discount.add(new BigDecimal(((double) orderItem.getCommissionPercentage() / 2) / 100.0));
             }
 
-            if (i.equals(new BigDecimal(1))) {
+            if (i.equals(BigDecimal.ONE)) {
                 previousMargin = margin;
                 previousSpending = spendings;
                 previousDiscount = discount;
@@ -203,47 +199,53 @@ public class BuyerService {
 
             BigDecimal timeDelta = new BigDecimal(
                     getMillisecondsDifferenceToDays(order.getCreatedTime(), previousDate));
-            if (timeDelta.add(new BigDecimal(1)).compareTo(new BigDecimal(0)) != 0)
-                retention = retention
-                        .add(spendings.subtract(previousSpending).divide(timeDelta.add(new BigDecimal(1)), 10,
-                                RoundingMode.HALF_UP));
-            if (!spendingsAll.equals(new BigDecimal(0))) {
-                if (spendingsAll.compareTo(new BigDecimal(0)) != 0)
-                    retention = retention.divide(spendingsAll, 10, RoundingMode.HALF_UP);
+            if (timeDelta.add(BigDecimal.ONE).compareTo(BigDecimal.ZERO) != 0) {
+                retention = retention.add(spendings.subtract(previousSpending)
+                        .divide(timeDelta.add(BigDecimal.ONE), 10, RoundingMode.HALF_UP));
             }
 
-            // Formula with static and retention difference
-            if (!discount.subtract(retention).equals(new BigDecimal(-1)))
-                retention = retention.add(new BigDecimal(1));
-            clvResponse.getCLVsGapsStatic().add(new TimeValue(order.getCreatedTime(),
-                    margin.multiply(retention.divide(new BigDecimal(1).add(discount).subtract(retention), 10,
-                            RoundingMode.HALF_UP))));
+            if (!spendingsAll.equals(BigDecimal.ZERO)) {
+                retention = retention.divide(spendingsAll, 10, RoundingMode.HALF_UP);
+            }
 
-            // Formula with difference with previous value
-            if (previousDiscount.subtract(retention).equals(new BigDecimal(-1)))
-                retention = retention.add(new BigDecimal(1));
+            // Check for division by zero
+            BigDecimal divisor = BigDecimal.ONE.add(discount).subtract(retention);
+            if (divisor.compareTo(BigDecimal.ZERO) == 0) {
+                divisor = BigDecimal.ONE;
+            }
+
+            clvResponse.getCLVsGapsStatic().add(new TimeValue(order.getCreatedTime(),
+                    margin.multiply(retention.divide(divisor, 10, RoundingMode.HALF_UP))));
+
+            divisor = BigDecimal.ONE.add(discount.subtract(previousDiscount)).subtract(retention);
+            if (divisor.compareTo(BigDecimal.ZERO) == 0) {
+                divisor = BigDecimal.ONE;
+            }
+
             clvResponse.getCLVsGapsDelta().add(new TimeValue(order.getCreatedTime(),
-                    margin.subtract(previousMargin).multiply(retention
-                            .divide(new BigDecimal(1).add(discount.subtract(previousDiscount)).subtract(retention), 10,
-                                    RoundingMode.HALF_UP))));
+                    margin.subtract(previousMargin)
+                            .multiply(retention.divide(divisor, 10, RoundingMode.HALF_UP))));
 
             previousMargin = margin;
             previousSpending = spendings;
             previousDiscount = discount;
 
-            marginAll.add(margin);
-            retentionAll.add(retention);
-            discountAll.add(discount);
+            marginAll = marginAll.add(margin);
+            retentionAll = retentionAll.add(retention);
+            discountAll = discountAll.add(discount);
         }
 
-        // Formula with average dividing
-        clvResponse
-                .setCLVsAverage(
-                        marginAll.divide(i, 10, RoundingMode.HALF_UP)
-                                .multiply(retentionAll.divide(i, 10, RoundingMode.HALF_UP)
-                                        .divide(new BigDecimal(1).add(discountAll.divide(i, 10, RoundingMode.HALF_UP))
-                                                .subtract(retentionAll.divide(i, 10, RoundingMode.HALF_UP)), 10,
-                                                RoundingMode.HALF_UP)));
+        BigDecimal averageMargin = marginAll.divide(i, 10, RoundingMode.HALF_UP);
+        BigDecimal averageRetention = retentionAll.divide(i, 10, RoundingMode.HALF_UP);
+        BigDecimal averageDiscount = discountAll.divide(i, 10, RoundingMode.HALF_UP);
+
+        BigDecimal divisor = BigDecimal.ONE.add(averageDiscount).subtract(averageRetention);
+        if (divisor.compareTo(BigDecimal.ZERO) == 0) {
+            divisor = BigDecimal.ONE;
+        }
+
+        clvResponse.setCLVsAverage(averageMargin.multiply(averageRetention.divide(divisor, 10, RoundingMode.HALF_UP)));
+
         return clvResponse;
     }
 
