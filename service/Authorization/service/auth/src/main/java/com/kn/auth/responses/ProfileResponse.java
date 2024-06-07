@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 public class ProfileResponse {
     @Schema(description = "Orders list")
-    private List<Order> orders;
+    private Integer orders;
 
     @Schema(description = "Order items array")
     private Authentication authentication;

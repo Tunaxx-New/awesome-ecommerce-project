@@ -64,16 +64,12 @@ public class Order extends SafeUpdate<Order> {
     @SafeToUpdate
     @ManyToOne
     @JoinColumn(name = "payment_method_id")
-    @JsonIgnoreProperties("carts")
-    @JsonBackReference
     @OnDelete(action = OnDeleteAction.CASCADE)
     private PaymentMethod paymentMethod;
 
     @SafeToUpdate
     @ManyToOne
     @JoinColumn(name = "shipping_address_id")
-    @JsonIgnoreProperties("carts")
-    @JsonBackReference
     @OnDelete(action = OnDeleteAction.CASCADE)
     private ShippingAddress shippingAddress;
 

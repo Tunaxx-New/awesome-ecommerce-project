@@ -235,13 +235,14 @@ public class AuthenticationService {
                                                         profile.getTransparentPolicyHistories()));
                 }
 
-                Integer buyerId = profile.getBuyer().getId();
-                List<Order> orders = orderRepository
-                                .findAllByBuyerId(buyerId, PageRequest.of(0, Integer.MAX_VALUE)).getContent();
-                                System.out.println(orders.size() + " TUNAXX");
-                return ProfileResponse.builder().authentication(profile).orders(orders)
+                return ProfileResponse.builder().authentication(profile).orders(getOrderCountByBuyerId(profile.getBuyer().getId()))
                                 .build();
         }
+
+        public int getOrderCountByBuyerId(int buyerId) {
+                // Assuming OrderRepository has a method called findAllByBuyerId
+                return orderRepository.findAllByBuyerId(buyerId, PageRequest.of(0, Integer.MAX_VALUE)).getContent().size();
+            }
 
         public List<TransparentPolicy> changeTransparentPolicies(List<TransparentPolicy> transparentPolicies,
                         @AuthenticatedId int authenticationId) {
