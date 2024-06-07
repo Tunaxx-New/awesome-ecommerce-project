@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.google.common.eventbus.DeadEvent;
 import com.kn.auth.annotations.AuthenticatedId;
 import com.kn.auth.enums.TransparentPolicy;
+import com.kn.auth.models.Authentication;
 import com.kn.auth.models.Badge;
 import com.kn.auth.models.Buyer;
 import com.kn.auth.models.Order;
@@ -18,6 +19,7 @@ import com.kn.auth.models.OrderItem;
 import com.kn.auth.models.Product;
 import com.kn.auth.models.ProductReview;
 import com.kn.auth.models.Seller;
+import com.kn.auth.repositories.AuthenticationRepository;
 import com.kn.auth.repositories.BadgeRepository;
 import com.kn.auth.repositories.ProductRepository;
 import com.kn.auth.repositories.ProductReviewRepository;
@@ -32,6 +34,7 @@ public class ProductService {
 
     private final ProductRepository productRepository;
     private final ProductReviewRepository productReviewRepository;
+    private final AuthenticationRepository authenticationRepository;
     private final SellerService sellerService;
     private final BuyerService buyerService;
     private final OrderItemService orderItemService;
@@ -58,7 +61,7 @@ public class ProductService {
         productReviewSafe = productReviewSafe.safeUpdate(productReview);
         productReviewSafe.setBuyer(buyer);
         productReviewSafe.setOrderItem(orderItem);
-        productReviewSafe.setProduct(orderItem.getProduct());
+        //productReviewSafe.setProduct(orderItem.getProduct());
         ProductReview savedProductReview = productReviewRepository.save(productReviewSafe);
         orderItem.setProductReview(savedProductReview);
         orderItemService.updateMany(List.of(orderItem));
@@ -110,7 +113,20 @@ public class ProductService {
 
     public Product create(Product product, @AuthenticatedId int authenticatedId) {
         // Adding first product badge
-        if (productRepository.findAllBySellerId(product.getSeller().getId()).get().size() == 0) {
+        Authentication authentication = authenticationRepository.findById(authenticatedId).get();
+        if (authentication.getSeller() == null || product.getCategories().stream().anyMatch(category -> category.getId().equals(1)))
+            return null;
+
+        Product productWithCorrectSeller = product;
+        productWithCorrectSeller.setSeller(authentication.getSeller());
+        Product product_ = productRepository.save(productWithCorrectSeller);
+
+        if (product_.getSeller() != null && product_.getSeller().getAuthentication().getId() != authenticatedId)
+            return null;
+        if (product.getPrice().compareTo(new BigDecimal(0)) <= -1)
+            return null;
+
+        if (productRepository.findAllBySellerId(product_.getSeller().getId()).get().size() == 0) {
             Buyer buyer = buyerService.getByAuthenticationId(authenticatedId);
             List<Badge> badges = buyer.getBadges();
             Badge badge = badgeRepository.findById(3).get();
@@ -119,11 +135,7 @@ public class ProductService {
             buyer.setBadges(badges);
             buyerService.update(buyer);
         }
-        Product product_ = productRepository.findById(product.getId()).get();
-        if (product_.getSeller().getAuthentication().getId() != authenticatedId)
-            return null;
-        if (product.getPrice().compareTo(new BigDecimal(0)) <= -1)
-            return null;
+
         return productRepository.save(product_.safeUpdate(product));
     }
 

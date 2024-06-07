@@ -16,7 +16,7 @@ create table _cart_item_seq (next_val bigint) engine=InnoDB;
 insert into _cart_item_seq values ( 1 );
 create table _cart_seq (next_val bigint) engine=InnoDB;
 insert into _cart_seq values ( 1 );
-create table _category (id integer not null, parent_id integer, created_time datetime(6), name varchar(255), primary key (id)) engine=InnoDB;
+create table _category (id integer not null, created_time datetime(6), name varchar(255), primary key (id)) engine=InnoDB;
 create table _category_seq (next_val bigint) engine=InnoDB;
 insert into _category_seq values ( 1 );
 create table _order (buyer_id integer not null, id integer not null, payment_method_id integer, shipping_address_id integer, created_time datetime(6), primary key (id)) engine=InnoDB;
@@ -47,6 +47,9 @@ create table _tag (id integer not null, created_time datetime(6), title varchar(
 create table _tag_seq (next_val bigint) engine=InnoDB;
 insert into _tag_seq values ( 1 );
 create table _transparent_policy (id integer not null, value integer, created_time datetime(6), name enum ('AVAILABLE_PRODUCT_ORDERS','AVAILABLE_PRODUCT_ORDERS_BUYER','AVAILABLE_PRODUCT_ORDERS_DATE','AVAILABLE_PRODUCT_ORDERS_PRICE'), type varchar(255), primary key (id)) engine=InnoDB;
+create table _transparent_policy_history (authentication_id integer not null, id integer not null, transparent_policy_id integer not null, created_time datetime(6), primary key (id)) engine=InnoDB;
+create table _transparent_policy_history_seq (next_val bigint) engine=InnoDB;
+insert into _transparent_policy_history_seq values ( 1 );
 create table _transparent_policy_seq (next_val bigint) engine=InnoDB;
 insert into _transparent_policy_seq values ( 1 );
 create table authentication_role (authentication_id integer not null, role_id integer not null) engine=InnoDB;
@@ -71,7 +74,6 @@ alter table _cart add constraint FK7569s7nmyfxn4ntys3jdahdd3 foreign key (paymen
 alter table _cart add constraint FKri9lerjcykbcj0dvfiy5jbo2v foreign key (shipping_address_id) references _shipping_addresses (id);
 alter table _cart_item add constraint FKmkbtxtd5xkr59p1tdf9g3r0br foreign key (cart_id) references _cart (id) on delete cascade;
 alter table _cart_item add constraint FKq7a2ocg7i08wmmiqj16qrm2il foreign key (product_id) references _product (id);
-alter table _category add constraint FK20wxfw42gocy6i40hullg4b2t foreign key (parent_id) references _category (id);
 alter table _order add constraint FK435eu2rx3g2y30l5rhj8u96xl foreign key (buyer_id) references _buyers (id);
 alter table _order add constraint FK4f4vvk9r4aydqeg0m3o475xwx foreign key (payment_method_id) references _payment_methods (id) on delete cascade;
 alter table _order add constraint FKodsq6ce8pas8e375kdkm0d2i7 foreign key (shipping_address_id) references _shipping_addresses (id) on delete cascade;
@@ -82,6 +84,8 @@ alter table _product_review add constraint FK6o4q1i9iy8s3xil26gawm3j0w foreign k
 alter table _product_review add constraint FKnpefsg2nbtm7y9w4qqumif3ya foreign key (order_item_id) references _order_item (id) on delete cascade;
 alter table _product_review add constraint FK91549px9csqo5wodkd73skjlx foreign key (product_id) references _product (id) on delete cascade;
 alter table _sellers add constraint FKp2ktngvj9nk4qhgu062hjfje2 foreign key (authentication_id) references _authentication (id) on delete cascade;
+alter table _transparent_policy_history add constraint FKc5vx26um0xal5yk0q3lpvv25d foreign key (authentication_id) references _authentication (id) on delete cascade;
+alter table _transparent_policy_history add constraint FKa92c4ymxgj81ycyl1hxlnr4mo foreign key (transparent_policy_id) references _transparent_policy (id) on delete cascade;
 alter table authentication_role add constraint FK3xq58x5a2dmqte9n69erwso56 foreign key (role_id) references _roles (id);
 alter table authentication_role add constraint FKlmygagyqgxwcl36jw42ksknjj foreign key (authentication_id) references _authentication (id);
 alter table authentication_transparent_policy add constraint FK9htm9a5n2l8s3tvjh8i7xwrg1 foreign key (authentication_transparent_policy_id) references _transparent_policy (id) on delete cascade;

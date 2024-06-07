@@ -12,6 +12,7 @@ import com.kn.auth.models.Order;
 import com.kn.auth.models.OrderItem;
 import com.kn.auth.models.Seller;
 import com.kn.auth.models.TransparentPolicy;
+import com.kn.auth.models.TransparentPolicyHistory;
 import com.kn.auth.repositories.BadgeRepository;
 import com.kn.auth.repositories.CartItemRepository;
 import com.kn.auth.repositories.OrderItemRepository;
@@ -64,6 +65,7 @@ public class OrderService {
                 if (order.getPaymentMethod() == null)
                         throw new RuntimeException("Payment methods is empty");
 
+                BigDecimal priceSum = new BigDecimal(0);
                 List<OrderItem> orderItems = new ArrayList<OrderItem>();
                 for (CartItem cartItem : cart.getCartItems()) {
                         // Check if product not ordered by seller
@@ -93,10 +95,33 @@ public class OrderService {
                                 policy.setSellerOrders(null);
                         }
 
+                        /*
+                         * Commission decreasing
+                         */
                         Integer commissionPercentage = 0;
-                        commissionPercentage += BadgeService.calculatePercentage(cart.getBuyer());
-                        commissionPercentage += BadgeService.calculatePercentage(cartItem.getProduct().getSeller(),
+                        commissionPercentage = BadgeService.calculatePercentage(cart.getBuyer(),
+                                        cart.getBuyer().getCommissionPercentage());
+                        commissionPercentage = BadgeService.calculatePercentage(cartItem.getProduct().getSeller(),
+                                        commissionPercentage,
                                         cart.getBuyer().getBadges());
+
+                        // Check if TP date is before product
+                        for (TransparentPolicyHistory transparentPolicyHistory : cart.getBuyer().getAuthentication()
+                                        .getTransparentPolicyHistories())
+                                if (cartItem.getProduct().getCreatedTime()
+                                                .isBefore(transparentPolicyHistory.getCreatedTime()))
+                                        commissionPercentage = BadgeService.calculatePercentage(commissionPercentage,
+                                                        transparentPolicyHistory);
+                        for (TransparentPolicyHistory transparentPolicyHistory : cartItem.getProduct().getSeller()
+                                        .getAuthentication()
+                                        .getTransparentPolicyHistories())
+                                if (cartItem.getProduct().getCreatedTime()
+                                                .isBefore(transparentPolicyHistory.getCreatedTime()))
+                                        commissionPercentage = BadgeService.calculatePercentage(commissionPercentage,
+                                                        transparentPolicyHistory);
+
+                        priceSum = priceSum.add(cartItem.getProduct().getPrice()
+                                        .multiply(new BigDecimal(cartItem.getAmount())));
 
                         orderItems.add(OrderItem.builder()
                                         .amount(cartItem.getAmount())
@@ -114,53 +139,46 @@ public class OrderService {
 
                 Order createdOrder = orderRepository.save(order);
 
-                BigDecimal priceSum = new BigDecimal(0);
                 for (OrderItem orderItem : orderItems) {
-                        Order order_ = orderItem.getOrder();
+                        Order order_ = createdOrder;
                         order_.setBuyer(Buyer.builder().id(order_.getBuyer().getId()).build());
                         orderItem.setOrder(order_);
-                        if (orderItem.getPrice() != null) {
-                                priceSum.add(orderItem.getPrice().multiply(new BigDecimal(orderItem.getAmount())));
-                        }
                 }
+
                 List<OrderItem> createdOrderItems = orderItemService.createMany(orderItems);
 
                 cartService.clear(authenticationId);
                 cart.setCartItems(new ArrayList<>());
-
+                Buyer buyer = cart.getBuyer();
                 // createdOrder.setOrderItems(createdOrderItems);
                 // createdOrder.setBuyer(null);
 
                 // Adding first product badge
                 // Also can be many, because orders greater than 100$ is something special!
                 if (priceSum.compareTo(new BigDecimal(100)) > 0) {
-                        Buyer buyer = cart.getBuyer();
                         List<Badge> badges = buyer.getBadges();
                         Badge badge = badgeRepository.findById(5).get();
                         // badge.setDescription(badge.getDescription() + "~" + createdOrder.getId());
                         badges.add(badge);
                         buyer.setBadges(badges);
-                        buyerService.update(buyer);
+                        buyer = buyerService.update(buyer);
                 }
 
                 // Adding first product badge
                 // Also can be many, because orders less than 1$ is something special!
                 if (priceSum.compareTo(new BigDecimal(1)) < 0) {
-                        Buyer buyer = cart.getBuyer();
                         List<Badge> badges = buyer.getBadges();
                         Badge badge = badgeRepository.findById(6).get();
                         // badge.setDescription(badge.getDescription() + "~" + createdOrder.getId());
                         badges.add(badge);
                         buyer.setBadges(badges);
-
-                        buyerService.update(buyer);
+                        buyer = buyerService.update(buyer);
                 }
 
                 // Adding first product badge
                 // Also can be many, because first consumer is smth special!
                 for (OrderItem orderItem : createdOrderItems) {
                         if (orderItemRepository.findAllByProductId(orderItem.getProduct().getId()).get().size() == 1) {
-                                Buyer buyer = cart.getBuyer();
                                 List<Badge> badges = buyer.getBadges();
                                 Badge badge = badgeRepository.findById(7).get();
                                 // badge.setDescription(badge.getDescription() + "~" + createdOrder.getId() +
@@ -168,19 +186,18 @@ public class OrderService {
                                 // + orderItem.getId());
                                 badges.add(badge);
                                 buyer.setBadges(badges);
-                                buyerService.update(buyer);
+                                buyer = buyerService.update(buyer);
                         }
                 }
 
                 // Adding first order badge
                 if (orderRepository.findAllByBuyerId(cart.getBuyer().getId()).get().size() == 1) {
-                        Buyer buyer = cart.getBuyer();
                         List<Badge> badges = buyer.getBadges();
                         Badge badge = badgeRepository.findById(2).get();
                         // badge.setDescription(badge.getDescription() + "~" + createdOrder.getId());
                         badges.add(badge);
                         buyer.setBadges(badges);
-                        buyerService.update(buyer);
+                        buyer = buyerService.update(buyer);
                 }
 
                 return createdOrder;

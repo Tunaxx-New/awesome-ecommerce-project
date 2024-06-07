@@ -38,11 +38,6 @@ public class Category {
 
     private String name;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "parent_id")
-    @JsonIgnore
-    private Category parentCategory;
-
     @ManyToMany(mappedBy = "categories")
     @JsonIgnore
     private List<Product> products;

@@ -21,4 +21,5 @@ public interface TableNameConstants {
     String TAG = "_tag";
     String ROLE = "_roles";
     String CATEGORY = "_category";
+    String TRANSPARENT_POLICY_HISTORY = "_transparent_policy_history";
 }

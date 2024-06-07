@@ -31,10 +31,12 @@ import com.kn.auth.models.Cart;
 import com.kn.auth.models.Order;
 import com.kn.auth.models.Seller;
 import com.kn.auth.models.TransparentPolicy;
+import com.kn.auth.models.TransparentPolicyHistory;
 import com.kn.auth.repositories.AuthenticationRepository;
 import com.kn.auth.repositories.BadgeRepository;
 import com.kn.auth.repositories.OrderRepository;
 import com.kn.auth.repositories.RoleRepository;
+import com.kn.auth.repositories.TransparentPolicyHistoryRepository;
 import com.kn.auth.repositories.TransparentPolicyRepository;
 import com.kn.auth.responses.ProfileResponse;
 import com.kn.auth.utils.StringUtil;
@@ -60,6 +62,8 @@ public class AuthenticationService {
         private final DatabaseService databaseService;
         private final RoleRepository roleRepository;
         private final OrderRepository orderRepository;
+
+        private final TransparentPolicyHistoryRepository transparentPolicyHistoryRepository;
 
         @Autowired
         private final PasswordEncoder passwordEncoder;
@@ -211,12 +215,24 @@ public class AuthenticationService {
                         profile.getBuyer().setOrders(orders);
                 }
 
-                if (profile.getBuyer() != null)
+                if (profile.getBuyer() != null) {
                         profile.getBuyer()
-                                        .setCommissionPercentage(BadgeService.calculatePercentage(profile.getBuyer()));
-                if (profile.getSeller() != null)
+                                        .setCommissionPercentage(BadgeService.calculatePercentage(profile.getBuyer(),
+                                                        profile.getBuyer().getCommissionPercentage()));
+                        profile.getBuyer()
+                                        .setCommissionPercentage(BadgeService.calculatePercentage(
+                                                        profile.getBuyer().getCommissionPercentage(),
+                                                        profile.getTransparentPolicyHistories()));
+                }
+                if (profile.getSeller() != null) {
                         profile.getSeller().setCommissionPercentage(BadgeService
-                                        .calculatePercentage(profile.getSeller(), profile.getBuyer().getBadges()));
+                                        .calculatePercentage(profile.getSeller(),
+                                                        profile.getSeller().getCommissionPercentage(),
+                                                        profile.getBuyer().getBadges()));
+                        profile.getSeller().setCommissionPercentage(BadgeService
+                                        .calculatePercentage(profile.getSeller().getCommissionPercentage(),
+                                                        profile.getTransparentPolicyHistories()));
+                }
 
                 return ProfileResponse.builder().authentication(profile).orders(profile.getBuyer().getOrders()).build();
         }
@@ -224,6 +240,15 @@ public class AuthenticationService {
         public List<TransparentPolicy> changeTransparentPolicies(List<TransparentPolicy> transparentPolicies,
                         @AuthenticatedId int authenticationId) {
                 Authentication authentication = authenticationRepository.findById(authenticationId).get();
+
+                transparentPolicyHistoryRepository.deleteAllByAuthenticationId(authenticationId);
+                List<TransparentPolicyHistory> newTransparentPolicyHistories = new ArrayList<>();
+                for (TransparentPolicy transparentPolicy : transparentPolicies) {
+                        newTransparentPolicyHistories.add(TransparentPolicyHistory.builder()
+                                        .authentication(authentication)
+                                        .transparentPolicy(transparentPolicy).build());
+                }
+                transparentPolicyHistoryRepository.saveAll(newTransparentPolicyHistories);
                 authentication.setAuthenticationTransparentPolicies(transparentPolicies);
                 return authenticationRepository.save(authentication).getAuthenticationTransparentPolicies();
         }

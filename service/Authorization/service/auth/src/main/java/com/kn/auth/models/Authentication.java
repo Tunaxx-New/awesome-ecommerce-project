@@ -23,6 +23,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
@@ -72,6 +73,9 @@ public class Authentication implements UserDetails {
     @JoinTable(name = "authentication_transparent_policy", joinColumns = @JoinColumn(name = "authentication_id"), inverseJoinColumns = @JoinColumn(name = "authentication_transparent_policy_id"))
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<TransparentPolicy> authenticationTransparentPolicies;
+
+    @OneToMany(mappedBy = "authentication", fetch = FetchType.EAGER)
+    private List<TransparentPolicyHistory> transparentPolicyHistories;
 
     @CreationTimestamp
     private LocalDateTime registeredTime;

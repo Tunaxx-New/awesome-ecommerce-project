@@ -50,7 +50,8 @@ public class Order extends SafeUpdate<Order> {
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
     private List<OrderItem> orderItems;
 
-    @Formula("(SELECT COALESCE(SUM(oi.price), 0) FROM " + TableNameConstants.ORDER_ITEM + " oi WHERE oi.order_id = id)")
+    @Formula("(SELECT COALESCE(SUM(COALESCE(oi.price, 0)), 0) FROM " + TableNameConstants.ORDER_ITEM + " oi WHERE oi.order_id = id)")
+    //@Formula("(SELECT COALESCE(SUM(oi.price), 0) FROM " + TableNameConstants.ORDER_ITEM + " oi WHERE oi.order_id = id)")
     private BigDecimal price;
 
     @ManyToOne(targetEntity = Buyer.class, fetch = FetchType.EAGER)
