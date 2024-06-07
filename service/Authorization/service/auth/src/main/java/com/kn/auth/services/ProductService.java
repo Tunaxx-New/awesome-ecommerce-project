@@ -1,5 +1,6 @@
 package com.kn.auth.services;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.NoSuchElementException;
@@ -7,6 +8,7 @@ import java.util.NoSuchElementException;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import com.google.common.eventbus.DeadEvent;
 import com.kn.auth.annotations.AuthenticatedId;
 import com.kn.auth.enums.TransparentPolicy;
 import com.kn.auth.models.Badge;
@@ -112,12 +114,17 @@ public class ProductService {
             Buyer buyer = buyerService.getByAuthenticationId(authenticatedId);
             List<Badge> badges = buyer.getBadges();
             Badge badge = badgeRepository.findById(3).get();
-            //badge.setDescription(badge.getDescription() + "~" + product.getId());
+            // badge.setDescription(badge.getDescription() + "~" + product.getId());
             badges.add(badge);
             buyer.setBadges(badges);
             buyerService.update(buyer);
         }
-        return productRepository.save(product);
+        Product product_ = productRepository.findById(product.getId()).get();
+        if (product_.getSeller().getAuthentication().getId() != authenticatedId)
+            return null;
+        if (product.getPrice().compareTo(new BigDecimal(0)) <= -1)
+            return null;
+        return productRepository.save(product_.safeUpdate(product));
     }
 
     public Product safeCreate(Product product, @AuthenticatedId int authenticatedId) {
