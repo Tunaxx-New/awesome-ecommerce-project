@@ -139,4 +139,12 @@ public class ProductService {
     public Page<Product> getAll(Pageable pageable) {
         return productRepository.findAll(pageable);
     }
+
+    public Page<Product> getAllByCategory(String categoryName, Pageable pageable) {
+        return productRepository.findAllByCategory(categoryName, pageable);
+    }
+
+    public Page<Product> getAllByTag(String tag, Pageable pageable) {
+        return productRepository.findAllByTag(tag, pageable);
+    }
 }

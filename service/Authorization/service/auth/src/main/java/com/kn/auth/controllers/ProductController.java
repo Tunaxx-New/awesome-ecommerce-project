@@ -35,6 +35,19 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).body(service.getAll(pageable));
     }
 
+    @GetMapping("/public/product/listByTag")
+    @Operation(summary = "Getting list of products by tag name", description = "Getting list of products with tag")
+    public ResponseEntity<Page<Product>> getAllByTag(@PageableDefault(size = 10) Pageable pageable, String tag) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.getAllByTag(tag, pageable));
+    }
+
+    @GetMapping("/public/product/listByCategory")
+    @Operation(summary = "Getting list of products by category name", description = "Getting list of products with category")
+    public ResponseEntity<Page<Product>> getAllByCategory(@PageableDefault(size = 10) Pageable pageable, String category) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.getAllByCategory(category, pageable));
+    }
+
+
     @GetMapping("/public/product/")
     @Operation(summary = "Getting list of products", description = "Getting specific product")
     public ResponseEntity<Product> get(@RequestParam(name = "id", required = true) int productId) {
