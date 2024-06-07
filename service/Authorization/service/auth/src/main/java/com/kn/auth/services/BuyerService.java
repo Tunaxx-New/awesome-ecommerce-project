@@ -151,7 +151,7 @@ public class BuyerService {
                 .sorted(Comparator.comparing(Order::getCreatedTime))
                 .collect(Collectors.toList());
 
-        BigDecimal i = new BigDecimal(0);
+        BigDecimal i = new BigDecimal(1);
         BigDecimal previousSpending = new BigDecimal(0);
         BigDecimal previousMargin = new BigDecimal(0);
         BigDecimal previousDiscount = new BigDecimal(0);
@@ -203,13 +203,16 @@ public class BuyerService {
 
             BigDecimal timeDelta = new BigDecimal(
                     getMillisecondsDifferenceToDays(order.getCreatedTime(), previousDate));
-            retention = retention.add(spendings.subtract(previousSpending).divide(timeDelta.add(new BigDecimal(1)), 10,
+                    if (timeDelta.add(new BigDecimal(1)).compareTo(new BigDecimal(0)) != 0)
+                        retention = retention.add(spendings.subtract(previousSpending).divide(timeDelta.add(new BigDecimal(1)), 10,
                     RoundingMode.HALF_UP));
-            if (!spendingsAll.equals(new BigDecimal(0)))
-                retention = retention.divide(spendingsAll, 10, RoundingMode.HALF_UP);
+            if (!spendingsAll.equals(new BigDecimal(0))) {
+                if (spendingsAll.compareTo(new BigDecimal(0)) != 0)
+                    retention = retention.divide(spendingsAll, 10, RoundingMode.HALF_UP);
+            }
 
             // Formula with static and retention difference
-            if (discount.subtract(retention).equals(new BigDecimal(-1)))
+            if (!discount.subtract(retention).equals(new BigDecimal(-1)))
                 retention = retention.add(new BigDecimal(1));
             clvResponse.getCLVsGapsStatic().add(new TimeValue(order.getCreatedTime(),
                     margin.multiply(retention.divide(new BigDecimal(1).add(discount).subtract(retention), 10,
