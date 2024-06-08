@@ -13,9 +13,11 @@ import com.kn.auth.models.OrderItem;
 import com.kn.auth.models.Product;
 import com.kn.auth.models.Seller;
 import com.kn.auth.models.TransparentPolicy;
+import com.kn.auth.models.TransparentPolicyHistory;
 import com.kn.auth.repositories.AuthenticationRepository;
 import com.kn.auth.repositories.RoleRepository;
 import com.kn.auth.repositories.SellerRepository;
+import com.kn.auth.repositories.TransparentPolicyHistoryRepository;
 import com.kn.auth.repositories.TransparentPolicyRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -28,6 +30,7 @@ public class SellerService {
     private final AuthenticationRepository authenticationRepository;
     private final RoleRepository roleRepository;
     private final BuyerService buyerService;
+    private final TransparentPolicyHistoryRepository transparentPolicyHistoryRepository;
 
     public Seller create(Seller seller, @AuthenticatedId int authenticationId) {
         Authentication authentication = authenticationRepository.findById(authenticationId).get();
@@ -66,10 +69,14 @@ public class SellerService {
                 i++;
                 List<TransparentPolicy> sellerTransparentPolicies = orderItem.getSellerTransparentPolicies();
                 List<TransparentPolicy> buyerTransparentPolicies = orderItem.getBuyerTransparentPolicies();
-                for (TransparentPolicy sellerTransparentPolicy : sellerTransparentPolicies)
-                    if (buyerTransparentPolicies.contains(sellerTransparentPolicy))
-                        loyaltyIndex.add(new BigDecimal(sellerTransparentPolicy.getValue()));
-                loyaltyIndex.add(buyerService.getLoyaltyIndex(orderItem.getOrder().getBuyer()));
+                for (TransparentPolicy sellerTransparentPolicy : sellerTransparentPolicies) {
+                    if (buyerTransparentPolicies.contains(sellerTransparentPolicy)) {
+                        loyaltyIndex = loyaltyIndex
+                                .add(new BigDecimal(-1 * BadgeService.calculatePercentage(0, TransparentPolicyHistory
+                                        .builder().transparentPolicy(sellerTransparentPolicy).build())));
+                    }
+                }
+                loyaltyIndex = loyaltyIndex.add(buyerService.getLoyaltyIndex(orderItem.getOrder().getBuyer()));
             }
         }
         return loyaltyIndex.divide(new BigDecimal(i), 10, RoundingMode.HALF_UP);
