@@ -2055,3 +2055,132 @@ Caused by: java.lang.IllegalStateException: Operator CONTAINING on categories re
 2024-06-09T12:38:59.415+05:00 DEBUG 14428 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
 2024-06-09T12:38:59.439+05:00 DEBUG 14428 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [java.lang.StackOverflowError]
 2024-06-09T12:39:02.843+05:00 DEBUG 14428 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-09T20:50:07.806+05:00  INFO 7052 --- [main] com.kn.auth.Application                  : Starting Application using Java 17.0.9 with PID 7052 (C:\Users\User\IdeaProjects\MarketPlace\awesome-ecommerce-project\service\Authorization\service\auth\build\classes\java\main started by User in C:\Users\User\IdeaProjects\MarketPlace\awesome-ecommerce-project\service\Authorization\service)
+2024-06-09T20:50:07.815+05:00  INFO 7052 --- [main] com.kn.auth.Application                  : No active profile set, falling back to 1 default profile: "default"
+2024-06-09T20:50:12.506+05:00  INFO 7052 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-09T20:50:13.142+05:00  INFO 7052 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 580 ms. Found 19 JPA repository interfaces.
+2024-06-09T20:50:16.558+05:00  INFO 7052 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-06-09T20:50:16.590+05:00  INFO 7052 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-09T20:50:16.591+05:00  INFO 7052 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2024-06-09T20:50:16.876+05:00  INFO 7052 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-06-09T20:50:16.878+05:00  INFO 7052 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 8910 ms
+2024-06-09T20:50:18.016+05:00  INFO 7052 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.16.3 by Redgate
+2024-06-09T20:50:18.018+05:00  INFO 7052 --- [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-06-09T20:50:18.019+05:00  INFO 7052 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2024-06-09T20:50:20.231+05:00  INFO 7052 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://104.248.234.194:3306/db (MySQL 8.4)
+2024-06-09T20:50:22.039+05:00  WARN 7052 --- [main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: MySQL 8.4 is newer than this version of Flyway and support has not been tested. The latest supported version of MySQL is 8.0.
+2024-06-09T20:50:23.576+05:00  INFO 7052 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 6 migrations (execution time 00:01.293s)
+2024-06-09T20:50:25.533+05:00  INFO 7052 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `db`: 1.0.5
+2024-06-09T20:50:25.716+05:00  INFO 7052 --- [main] o.f.core.internal.command.DbMigrate      : Schema `db` is up to date. No migration necessary.
+2024-06-09T20:50:28.781+05:00  INFO 7052 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-09T20:50:29.242+05:00  INFO 7052 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2024-06-09T20:50:29.274+05:00  INFO 7052 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-06-09T20:50:31.852+05:00  INFO 7052 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-09T20:50:32.118+05:00  INFO 7052 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-09T20:50:34.282+05:00  INFO 7052 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@54a033b8
+2024-06-09T20:50:34.298+05:00  INFO 7052 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-09T20:50:35.018+05:00  WARN 7052 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-09T20:50:40.456+05:00  WARN 7052 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.schema-generation.scripts.action], use [jakarta.persistence.schema-generation.scripts.action] instead
+2024-06-09T20:50:43.383+05:00  INFO 7052 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-09T20:50:43.403+05:00  WARN 7052 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.schema-generation.scripts.action], use [jakarta.persistence.schema-generation.scripts.action] instead
+2024-06-09T20:50:43.421+05:00  WARN 7052 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [jakarta.persistence.schema-generation.scripts.drop-target], use [javax.persistence.schema-generation.scripts.drop-target] instead
+2024-06-09T20:50:43.567+05:00  WARN 7052 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [jakarta.persistence.schema-generation.scripts.create-target], use [javax.persistence.schema-generation.scripts.create-target] instead
+2024-06-09T20:50:43.654+05:00  INFO 7052 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-09T20:50:47.748+05:00 DEBUG 7052 --- [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-06-09T20:50:48.987+05:00  INFO 7052 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-09T20:50:55.014+05:00  WARN 7052 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-09T20:50:55.960+05:00 DEBUG 7052 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 41 mappings in 'requestMappingHandlerMapping'
+2024-06-09T20:50:57.278+05:00 DEBUG 7052 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-06-09T20:50:57.797+05:00  INFO 7052 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoint(s) beneath base path '/actuator'
+2024-06-09T20:50:58.006+05:00  INFO 7052 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7330574d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5ac4f417, org.springframework.security.web.context.SecurityContextHolderFilter@19bdf520, org.springframework.security.web.header.HeaderWriterFilter@25be3c66, org.springframework.security.web.authentication.logout.LogoutFilter@15f75fa5, com.kn.auth.config.JwtAuthenticationFilter@214738c1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@656f985b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@44575b13, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@34615ef4, org.springframework.security.web.session.SessionManagementFilter@77dd90ce, org.springframework.security.web.access.ExceptionTranslationFilter@421b4cf3, org.springframework.security.web.access.intercept.AuthorizationFilter@6d0bf784]
+2024-06-09T20:50:58.467+05:00 DEBUG 7052 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-06-09T20:50:58.671+05:00 DEBUG 7052 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-06-09T20:51:00.111+05:00  INFO 7052 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
+2024-06-09T20:51:00.203+05:00  INFO 7052 --- [main] com.kn.auth.Application                  : Started Application in 53.521 seconds (process running for 58.327)
+2024-06-09T20:52:46.643+05:00  INFO 7052 --- [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-09T20:52:46.657+05:00  INFO 7052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-09T20:52:46.663+05:00 DEBUG 7052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-06-09T20:52:46.664+05:00 DEBUG 7052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-06-09T20:52:46.665+05:00 DEBUG 7052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-06-09T20:52:46.716+05:00 DEBUG 7052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1c7cd5bf
+2024-06-09T20:52:46.719+05:00 DEBUG 7052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@6fa9e6db
+2024-06-09T20:52:46.723+05:00 DEBUG 7052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-06-09T20:52:46.725+05:00  INFO 7052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 66 ms
+2024-06-09T20:52:47.061+05:00 DEBUG 7052 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T20:52:47.103+05:00 DEBUG 7052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/swagger-ui/index.html", parameters={}
+2024-06-09T20:52:47.120+05:00 DEBUG 7052 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T20:52:47.269+05:00 DEBUG 7052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-09T20:52:47.372+05:00 DEBUG 7052 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T20:52:47.377+05:00 DEBUG 7052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/swagger-ui/swagger-ui.css", parameters={}
+2024-06-09T20:52:47.379+05:00 DEBUG 7052 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T20:52:47.386+05:00 DEBUG 7052 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/swagger-ui/swagger-ui-bundle.js", parameters={}
+2024-06-09T20:52:47.398+05:00 DEBUG 7052 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T20:52:47.401+05:00 DEBUG 7052 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T20:52:47.412+05:00 DEBUG 7052 --- [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T20:52:47.428+05:00 DEBUG 7052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-09T20:52:47.425+05:00 DEBUG 7052 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T20:52:47.457+05:00 DEBUG 7052 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/swagger-ui/index.css", parameters={}
+2024-06-09T20:52:47.460+05:00 DEBUG 7052 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/swagger-ui/swagger-initializer.js", parameters={}
+2024-06-09T20:52:47.468+05:00 DEBUG 7052 --- [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T20:52:47.474+05:00 DEBUG 7052 --- [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T20:52:47.475+05:00 DEBUG 7052 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T20:52:47.476+05:00 DEBUG 7052 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/swagger-ui/swagger-ui-standalone-preset.js", parameters={}
+2024-06-09T20:52:47.492+05:00 DEBUG 7052 --- [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T20:52:47.520+05:00 DEBUG 7052 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-09T20:52:47.510+05:00 DEBUG 7052 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-09T20:52:47.564+05:00 DEBUG 7052 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-09T20:52:47.779+05:00 DEBUG 7052 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-09T20:52:48.080+05:00 DEBUG 7052 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T20:52:48.082+05:00 DEBUG 7052 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/swagger-ui/favicon-32x32.png", parameters={}
+2024-06-09T20:52:48.085+05:00 DEBUG 7052 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T20:52:48.092+05:00 DEBUG 7052 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-09T20:52:48.168+05:00 DEBUG 7052 --- [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T20:52:48.171+05:00 DEBUG 7052 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/swagger-ui/favicon-32x32.png", parameters={}
+2024-06-09T20:52:48.171+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.ui.SwaggerConfigResource#openapiJson(HttpServletRequest)
+2024-06-09T20:52:48.174+05:00 DEBUG 7052 --- [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T20:52:48.174+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.ui.SwaggerConfigResource#openapiJson(HttpServletRequest)
+2024-06-09T20:52:48.179+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.ui.SwaggerConfigResource#openapiJson(HttpServletRequest)
+2024-06-09T20:52:48.182+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.ui.SwaggerConfigResource#openapiJson(HttpServletRequest)
+2024-06-09T20:52:48.184+05:00 DEBUG 7052 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-09T20:52:48.187+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.ui.SwaggerConfigResource#openapiJson(HttpServletRequest)
+2024-06-09T20:52:48.190+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.ui.SwaggerConfigResource#openapiJson(HttpServletRequest)
+2024-06-09T20:52:48.195+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.ui.SwaggerConfigResource#openapiJson(HttpServletRequest)
+2024-06-09T20:52:48.199+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/v3/api-docs/swagger-config", parameters={}
+2024-06-09T20:52:48.203+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.ui.SwaggerConfigResource#openapiJson(HttpServletRequest)
+2024-06-09T20:52:48.279+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json]
+2024-06-09T20:52:48.291+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Writing [{configUrl=/api/v3/api-docs/swagger-config, oauth2RedirectUrl=http://localhost:8080/api/swagger-ui/o (truncated)...]
+2024-06-09T20:52:48.311+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-09T20:52:48.396+05:00 DEBUG 7052 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.api.OpenApiWebMvcResource#openapiJson(HttpServletRequest, String, Locale)
+2024-06-09T20:52:48.399+05:00 DEBUG 7052 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.api.OpenApiWebMvcResource#openapiJson(HttpServletRequest, String, Locale)
+2024-06-09T20:52:48.401+05:00 DEBUG 7052 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.api.OpenApiWebMvcResource#openapiJson(HttpServletRequest, String, Locale)
+2024-06-09T20:52:48.403+05:00 DEBUG 7052 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.api.OpenApiWebMvcResource#openapiJson(HttpServletRequest, String, Locale)
+2024-06-09T20:52:48.408+05:00 DEBUG 7052 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.api.OpenApiWebMvcResource#openapiJson(HttpServletRequest, String, Locale)
+2024-06-09T20:52:48.411+05:00 DEBUG 7052 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.api.OpenApiWebMvcResource#openapiJson(HttpServletRequest, String, Locale)
+2024-06-09T20:52:48.414+05:00 DEBUG 7052 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.api.OpenApiWebMvcResource#openapiJson(HttpServletRequest, String, Locale)
+2024-06-09T20:52:48.416+05:00 DEBUG 7052 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/v3/api-docs", parameters={}
+2024-06-09T20:52:48.417+05:00 DEBUG 7052 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.api.OpenApiWebMvcResource#openapiJson(HttpServletRequest, String, Locale)
+2024-06-09T20:52:51.379+05:00  INFO 7052 --- [http-nio-8080-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 2896 ms
+2024-06-09T20:52:51.458+05:00 DEBUG 7052 --- [http-nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, */*] and supported [application/json]
+2024-06-09T20:52:51.467+05:00 DEBUG 7052 --- [http-nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Writing [{123, 34, 111, 112, 101, 110, 97, 112, 105, 34, 58, 34, 51, 46, 48, 46, 49, 34, 44, 34, 105, 110, 10 (truncated)...]
+2024-06-09T20:52:51.484+05:00 DEBUG 7052 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-09T20:53:49.244+05:00 DEBUG 7052 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.OrderController#list(Pageable)
+2024-06-09T20:53:49.252+05:00 DEBUG 7052 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.OrderController#list(Pageable)
+2024-06-09T20:53:49.256+05:00 DEBUG 7052 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.OrderController#list(Pageable)
+2024-06-09T20:53:49.258+05:00 DEBUG 7052 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.OrderController#list(Pageable)
+2024-06-09T20:53:49.286+05:00 DEBUG 7052 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/private/buyer/order/list?page=0&size=1", parameters={masked}
+2024-06-09T20:53:49.288+05:00 DEBUG 7052 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.OrderController#list(Pageable)
+2024-06-09T20:53:57.604+05:00 DEBUG 7052 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-06-09T20:53:57.613+05:00 DEBUG 7052 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 5 containing com.kn.auth.models.Order instances]
+2024-06-09T20:54:01.231+05:00 DEBUG 7052 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-09T20:54:19.090+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-09T20:54:19.100+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-09T20:54:19.101+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-09T20:54:19.103+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-09T20:54:19.104+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-09T20:54:19.107+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-09T20:54:19.108+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-09T20:54:19.120+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/api/private/profile", parameters={}
+2024-06-09T20:54:19.123+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.kn.auth.controllers.AuthenticationController#profile()
+2024-06-09T20:54:30.042+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-06-09T20:54:30.101+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [java.lang.StackOverflowError]
+2024-06-09T20:54:35.947+05:00 DEBUG 7052 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK

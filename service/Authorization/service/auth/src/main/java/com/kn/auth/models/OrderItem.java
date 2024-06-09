@@ -56,7 +56,6 @@ public class OrderItem {
     @ManyToOne(targetEntity = Product.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "product_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private Product product;
 
     private int amount;
