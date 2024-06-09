@@ -240,8 +240,14 @@ public class AuthenticationService {
                                                         profile.getTransparentPolicyHistories()));
                 }
 
+                return ProfileResponse.builder().authentication(profile)
+                                .orders(getOrderCountByBuyerId(profile.getBuyer().getId()))
+                                .build();
+        }
+
+        public Authentication setImagesUrls(Authentication authentication) {
                 List<Badge> badges = new ArrayList<>();
-                for (Badge badge : profile.getBuyer().getBadges()) {
+                for (Badge badge : authentication.getBuyer().getBadges()) {
                         try {
                                 badge.setImageSource(minioService.getUrl(badge.getImageSource()));
                         } catch (InvalidKeyException | NoSuchAlgorithmException | IllegalArgumentException
@@ -250,11 +256,8 @@ public class AuthenticationService {
                         }
                         badges.add(badge);
                 }
-                profile.getBuyer().setBadges(badges);
-
-                return ProfileResponse.builder().authentication(profile)
-                                .orders(getOrderCountByBuyerId(profile.getBuyer().getId()))
-                                .build();
+                authentication.getBuyer().setBadges(badges);
+                return authentication;
         }
 
         public int getOrderCountByBuyerId(int buyerId) {

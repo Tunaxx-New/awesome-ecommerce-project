@@ -41,7 +41,10 @@ public class AuthenticationController {
         @ResponseBody
         @Operation(summary = "Register new user", description = "Endpoint to register a new user")
         public ResponseEntity<ProfileResponse> profile() {
-                return ResponseEntity.status(HttpStatus.OK).body(service.findByAspectId(0));
+                ProfileResponse profileResponse = service.findByAspectId(0);
+                Authentication authenticationWithUrlImages = service.setImagesUrls(profileResponse.getAuthentication());
+                profileResponse.setAuthentication(authenticationWithUrlImages);
+                return ResponseEntity.status(HttpStatus.OK).body(profileResponse);
         }
 
         @PostMapping("/private/profile/changeTransparentPolicies")

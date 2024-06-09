@@ -40,7 +40,7 @@ public class ProductController {
     @GetMapping("/public/product/list")
     @Operation(summary = "Getting list of products", description = "Getting list of products")
     public ResponseEntity<Page<Product>> list(@PageableDefault(size = 10) Pageable pageable) {
-        return ResponseEntity.status(HttpStatus.OK).body(service.getAll(pageable));
+        return ResponseEntity.status(HttpStatus.OK).body(service.getAllForController(pageable));
     }
 
     @GetMapping("/public/product/listByTag")
@@ -65,7 +65,7 @@ public class ProductController {
     @GetMapping("/public/product/")
     @Operation(summary = "Getting list of products", description = "Getting specific product")
     public ResponseEntity<Product> get(@RequestParam(name = "id", required = true) int productId) {
-        return ResponseEntity.status(HttpStatus.OK).body(service.get(productId));
+        return ResponseEntity.status(HttpStatus.OK).body(service.setImageUrl(service.get(productId)));
     }
 
     @PostMapping("/private/seller/product/add")

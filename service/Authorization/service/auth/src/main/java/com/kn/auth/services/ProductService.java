@@ -156,6 +156,10 @@ public class ProductService {
 
     public Product get(int productId) {
         Product product = productRepository.findById(productId).get();
+        return product;
+    }
+
+    public Product setImageUrl(Product product) {
         try {
             product.setImage_filename(minioService.getUrl(product.getImage_filename()));
         } catch (InvalidKeyException | NoSuchAlgorithmException | IllegalArgumentException | MinioException
@@ -180,6 +184,10 @@ public class ProductService {
     }
 
     public Page<Product> getAll(Pageable pageable) {
+        return productRepository.findAll(pageable);
+    }
+
+    public Page<Product> getAllForController(Pageable pageable) {
         return getImageUrlsForProduct(productRepository.findAll(pageable));
     }
 
