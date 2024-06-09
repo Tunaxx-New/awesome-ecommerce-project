@@ -1,6 +1,9 @@
 package com.kn.auth.services;
 
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.NoSuchElementException;
@@ -14,15 +17,19 @@ import com.kn.auth.enums.TransparentPolicy;
 import com.kn.auth.models.Authentication;
 import com.kn.auth.models.Badge;
 import com.kn.auth.models.Buyer;
+import com.kn.auth.models.Category;
 import com.kn.auth.models.Order;
 import com.kn.auth.models.OrderItem;
 import com.kn.auth.models.Product;
 import com.kn.auth.models.ProductReview;
 import com.kn.auth.models.Seller;
+import com.kn.auth.models.Tag;
 import com.kn.auth.repositories.AuthenticationRepository;
 import com.kn.auth.repositories.BadgeRepository;
 import com.kn.auth.repositories.ProductRepository;
 import com.kn.auth.repositories.ProductReviewRepository;
+
+import io.minio.errors.MinioException;
 
 import org.springframework.data.domain.Pageable;
 
@@ -40,6 +47,8 @@ public class ProductService {
     private final OrderItemService orderItemService;
 
     private final BadgeRepository badgeRepository;
+
+    private final MinioService minioService;
 
     public ProductReview review(ProductReview productReview, int productId, @AuthenticatedId int authenticatedId) {
         Buyer buyer = buyerService.getByAuthenticationId(authenticatedId);
@@ -61,7 +70,7 @@ public class ProductService {
         productReviewSafe = productReviewSafe.safeUpdate(productReview);
         productReviewSafe.setBuyer(buyer);
         productReviewSafe.setOrderItem(orderItem);
-        //productReviewSafe.setProduct(orderItem.getProduct());
+        // productReviewSafe.setProduct(orderItem.getProduct());
         ProductReview savedProductReview = productReviewRepository.save(productReviewSafe);
         orderItem.setProductReview(savedProductReview);
         orderItemService.updateMany(List.of(orderItem));
@@ -114,7 +123,8 @@ public class ProductService {
     public Product create(Product product, @AuthenticatedId int authenticatedId) {
         // Adding first product badge
         Authentication authentication = authenticationRepository.findById(authenticatedId).get();
-        if (authentication.getSeller() == null || product.getCategories().stream().anyMatch(category -> category.getId().equals(1)))
+        if (authentication.getSeller() == null
+                || product.getCategories().stream().anyMatch(category -> category.getId().equals(1)))
             return null;
 
         Product productWithCorrectSeller = product;
@@ -145,18 +155,39 @@ public class ProductService {
     }
 
     public Product get(int productId) {
-        return productRepository.findById(productId).get();
+        Product product = productRepository.findById(productId).get();
+        try {
+            product.setImage_filename(minioService.getUrl(product.getImage_filename()));
+        } catch (InvalidKeyException | NoSuchAlgorithmException | IllegalArgumentException | MinioException
+                | IOException e) {
+            e.printStackTrace();
+            product.setImage_filename(null);
+        }
+        return product;
+    }
+
+    public Page<Product> getImageUrlsForProduct(Page<Product> products) {
+        products.forEach(product -> {
+            try {
+                product.setImage_filename(minioService.getUrl(product.getImage_filename()));
+            } catch (InvalidKeyException | NoSuchAlgorithmException | IllegalArgumentException | MinioException
+                    | IOException e) {
+                e.printStackTrace();
+                product.setImage_filename(null);
+            }
+        });
+        return products;
     }
 
     public Page<Product> getAll(Pageable pageable) {
-        return productRepository.findAll(pageable);
+        return getImageUrlsForProduct(productRepository.findAll(pageable));
     }
 
-    public Page<Product> getAllByCategory(String categoryName, Pageable pageable) {
-        return productRepository.findAllByCategory(categoryName, pageable);
+    public Page<Product> getAllByCategory(List<Category> categories, Pageable pageable) {
+        return getImageUrlsForProduct(productRepository.findByCategoriesIn(categories, pageable));
     }
 
-    public Page<Product> getAllByTag(String tag, Pageable pageable) {
-        return productRepository.findAllByTag(tag, pageable);
+    public Page<Product> getAllByTag(List<Tag> tags, Pageable pageable) {
+        return getImageUrlsForProduct(productRepository.findByTagsIn(tags, pageable));
     }
 }

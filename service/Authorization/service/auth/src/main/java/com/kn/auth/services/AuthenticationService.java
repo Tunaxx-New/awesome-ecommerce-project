@@ -1,5 +1,8 @@
 package com.kn.auth.services;
 
+import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,6 +49,7 @@ import com.kn.auth.validators.PasswordValidator;
 import com.kn.auth.services.BadgeService;
 
 import io.jsonwebtoken.JwtException;
+import io.minio.errors.MinioException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -65,6 +69,7 @@ public class AuthenticationService {
         private final OrderRepository orderRepository;
 
         private final TransparentPolicyHistoryRepository transparentPolicyHistoryRepository;
+        private final MinioService minioService;
 
         @Autowired
         private final PasswordEncoder passwordEncoder;
@@ -235,14 +240,28 @@ public class AuthenticationService {
                                                         profile.getTransparentPolicyHistories()));
                 }
 
-                return ProfileResponse.builder().authentication(profile).orders(getOrderCountByBuyerId(profile.getBuyer().getId()))
+                List<Badge> badges = new ArrayList<>();
+                for (Badge badge : profile.getBuyer().getBadges()) {
+                        try {
+                                badge.setImageSource(minioService.getUrl(badge.getImageSource()));
+                        } catch (InvalidKeyException | NoSuchAlgorithmException | IllegalArgumentException
+                                        | MinioException | IOException e) {
+                                badge.setImageSource(null);
+                        }
+                        badges.add(badge);
+                }
+                profile.getBuyer().setBadges(badges);
+
+                return ProfileResponse.builder().authentication(profile)
+                                .orders(getOrderCountByBuyerId(profile.getBuyer().getId()))
                                 .build();
         }
 
         public int getOrderCountByBuyerId(int buyerId) {
                 // Assuming OrderRepository has a method called findAllByBuyerId
-                return orderRepository.findAllByBuyerId(buyerId, PageRequest.of(0, Integer.MAX_VALUE)).getContent().size();
-            }
+                return orderRepository.findAllByBuyerId(buyerId, PageRequest.of(0, Integer.MAX_VALUE)).getContent()
+                                .size();
+        }
 
         public List<TransparentPolicy> changeTransparentPolicies(List<TransparentPolicy> transparentPolicies,
                         @AuthenticatedId int authenticationId) {
