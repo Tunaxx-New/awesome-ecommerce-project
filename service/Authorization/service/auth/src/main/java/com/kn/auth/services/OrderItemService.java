@@ -26,6 +26,10 @@ public class OrderItemService {
         return orderItemRepository.findAllByOrderId(orderId).get();
     }
 
+    public OrderItem getById(int orderItemId) {
+        return orderItemRepository.findById(orderItemId).get();
+    }
+
     public List<OrderItem> updateMany(List<OrderItem> orders) {
         return orderItemRepository.saveAll(orders);
     }

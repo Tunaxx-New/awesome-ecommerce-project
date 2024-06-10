@@ -50,7 +50,7 @@ public class ProductService {
 
     private final MinioService minioService;
 
-    public ProductReview review(ProductReview productReview, int productId, @AuthenticatedId int authenticatedId) {
+    public ProductReview review(ProductReview productReview, int productId, int orderItemId, @AuthenticatedId int authenticatedId) {
         Buyer buyer = buyerService.getByAuthenticationId(authenticatedId);
         try {
             Seller seller = sellerService.get(authenticatedId);
@@ -66,6 +66,7 @@ public class ProductService {
                 .filter(orderItem_ -> orderItem_.getProductReview() == null)
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("You are not ordered products with id: " + productId));
+        orderItem = orderItemService.getById(orderItemId);
         ProductReview productReviewSafe = new ProductReview();
         productReviewSafe = productReviewSafe.safeUpdate(productReview);
         productReviewSafe.setBuyer(buyer);

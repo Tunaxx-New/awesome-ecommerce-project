@@ -77,8 +77,8 @@ public class ProductController {
     @PostMapping("/private/buyer/product/id/review")
     @Operation(summary = "Make review on product", description = "Checks if buyer reviewed product and add review")
     public ResponseEntity<ProductReview> reviewOrder(@RequestBody RequestEntity<ProductReview> review,
-            @RequestParam(name = "id", required = true) int productId) {
-        return ResponseEntity.status(HttpStatus.OK).body(service.review(review.getBody(), productId, 0));
+            @RequestParam(name = "productId", required = true) int productId, @RequestParam(name = "orderId", required = true) int orderItemid) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.review(review.getBody(), productId, orderItemid, 0));
     }
 
     @GetMapping("/private/buyer/product/id/orders")
