@@ -54,7 +54,7 @@ public class ProductService {
         Buyer buyer = buyerService.getByAuthenticationId(authenticatedId);
         try {
             Seller seller = sellerService.get(authenticatedId);
-            if (seller.getProducts().stream().filter(product -> product.getId().equals(productId)).findFirst() != null)
+            if (seller.getProducts().stream().filter(product -> product.getId().equals(productId)).findFirst().isPresent())
                 throw new RuntimeException("You are the owner of product: " + productId);
         } catch (NoSuchElementException e) {
 
@@ -70,7 +70,7 @@ public class ProductService {
         productReviewSafe = productReviewSafe.safeUpdate(productReview);
         productReviewSafe.setBuyer(buyer);
         productReviewSafe.setOrderItem(orderItem);
-        // productReviewSafe.setProduct(orderItem.getProduct());
+        productReviewSafe.setProduct(orderItem.getProduct());
         ProductReview savedProductReview = productReviewRepository.save(productReviewSafe);
         orderItem.setProductReview(savedProductReview);
         orderItemService.updateMany(List.of(orderItem));
