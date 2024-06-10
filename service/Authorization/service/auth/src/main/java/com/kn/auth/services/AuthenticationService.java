@@ -5,6 +5,8 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -247,9 +249,13 @@ public class AuthenticationService {
 
         public Authentication setImagesUrls(Authentication authentication) {
                 List<Badge> badges = new ArrayList<>();
+                Set<Integer> badgeIds = new HashSet<>();
                 for (Badge badge : authentication.getBuyer().getBadges()) {
                         try {
-                                badge.setImageSource(minioService.getUrl(badge.getImageSource()));
+                                if (!badgeIds.contains(badge.getId())) {
+                                        badge.setImageSource(minioService.getUrl(badge.getImageSource()));
+                                        badgeIds.add(badge.getId());
+                                }
                         } catch (InvalidKeyException | NoSuchAlgorithmException | IllegalArgumentException
                                         | MinioException | IOException e) {
                                 badge.setImageSource(null);
