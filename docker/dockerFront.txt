@@ -1,3 +1,5 @@
+// Git sources
+git pull
 // cd
 cd /home/awesome-ecommerce-project/web/Authorization/
 
