@@ -15,3 +15,8 @@ docker run --network=greenshop-dev_default -d --name greenshop-dev-service-1 -p 
 // Prometheus running
 docker run --network=greenshop-dev_default -d --name prometheus -p 9090:9090 -v $(pwd)/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus:v2.44.0
 
+// Minio
+docker run --network=greenshop-dev_default -d --name minio -p 9000:9000 -p 9001:9001 -v /tmp/.minio:/root/.minio -v /tmp/minio/data:/data minio/minio server --console-address :9001 /data
+docker run --network=greenshop-dev_default -d --name minio -p 9000:9000 -p 9001:9001 -v /tmp/minio/data:/data minio/minio server --console-address :9001 /data
+docker run --network=greenshop-dev_default -d --name minio -e "MINIO_ACCESS_KEY=minioaccesskey" -e "MINIO_SECRET_KEY=miniosecretkey" -p 9000:9000 -p 9001:9001 minio/minio:latest server --console-address :9001 /data
+
