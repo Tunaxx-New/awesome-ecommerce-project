@@ -1,15 +1,14 @@
-# Use the Bayes Impact React base image
-FROM bayesimpact/react-base:latest
+# Use an official Node runtime as a parent image
+FROM node:14-alpine
 
-# Set the working directory inside the container
+# Set the working directory in the container
 WORKDIR /usr/src/app
 
-# Clone the GitHub repository into the working directory
-# Replace 'your-repo-url.git' with the actual repository URL
-RUN git clone https://github.com/Tunaxx-New/React-Diploma.git .
+# Copy the package.json and package-lock.json (if available)
+COPY package*.json ./
 
-# Optionally, checkout a specific branch or commit
-# RUN git checkout your-branch-or-commit
+# Copy the entire project folder into the container
+COPY . .
 
 # Install dependencies
 RUN npm install
@@ -17,5 +16,5 @@ RUN npm install
 # Expose the port the app runs on
 EXPOSE 3000
 
-# Use CMD to start the React app
+# Run the app when the container launches
 CMD ["npm", "start"]
