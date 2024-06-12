@@ -1,5 +1,5 @@
 # Use an official Node runtime as a parent image
-FROM node:14-alpine
+FROM node:20.12.2
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install npm compatible with lockfileVersion@2
-RUN npm install -g npm@7
+RUN npm install -g npm@8.10.0
 
 # Copy the entire project folder into the container
 COPY . .
