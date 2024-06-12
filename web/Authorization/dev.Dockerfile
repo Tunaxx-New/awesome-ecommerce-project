@@ -7,6 +7,9 @@ WORKDIR /usr/src/app
 # Copy the package.json and package-lock.json (if available)
 COPY package*.json ./
 
+# Install npm compatible with lockfileVersion@2
+RUN npm install -g npm@7
+
 # Copy the entire project folder into the container
 COPY . .
 
