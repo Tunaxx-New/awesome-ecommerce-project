@@ -11,7 +11,7 @@ COPY package*.json ./
 COPY . .
 
 # Install dependencies
-RUN npm ci
+RUN npm install
 
 # Expose the port the app runs on
 EXPOSE 3000
