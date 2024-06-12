@@ -66,7 +66,9 @@ public class CartService {
         List<CartItem> actualCartItems = cartItemService.getAllByCartId(cart.getId());
 
         List<Integer> productIds = new ArrayList<>();
-        List<CartItem> uniqueCartItems = new ArrayList<>();
+        for (CartItem cartItem : cart.getCartItems())
+            productIds.add(cartItem.getProduct().getId());
+        List<CartItem> uniqueCartItems = cart.getCartItems();
         for (CartItem cartItem : cartItems) {
             // Skip unauthorized cart items
             for (CartItem actualCartItem : actualCartItems) {
@@ -80,7 +82,7 @@ public class CartService {
                 if (productIds.contains(actualCartItem.getProduct().getId())) {
                     for (CartItem uniqueCartItem : uniqueCartItems)
                         if (uniqueCartItem.getProduct().getId().equals(actualCartItem.getProduct().getId()))
-                            uniqueCartItem.setAmount(uniqueCartItem.getAmount() + cartItem.getAmount());
+                            uniqueCartItem.setAmount(cartItem.getAmount());
                 } else {
                     /*
                     uniqueCartItems.add(CartItem.builder()
