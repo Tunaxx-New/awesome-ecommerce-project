@@ -1,0 +1,49 @@
+:root {
+    --badge-color-new: #007bff;
+    /* Blue */
+    --badge-color-popular: #28a745;
+    /* Green */
+    --badge-color-sale: #ffc107;
+    /* Yellow */
+    --badge-color-limited: #dc3545;
+    /* Red */
+    --badge-color-default: #6c757d;
+    /* Gray */
+}
+
+.user-card {
+    transition: box-shadow 0.2s;
+}
+
+.user-card > * {
+    color: initial;
+}
+
+.user-card:hover {
+    box-shadow: 0px 4px 0px !important;
+    transition: box-shadow 0.2s;
+}
+
+.user-card:hover .hover-avatar-light-parent .hover-avatar-light {
+    transform: translateY(-100%) scale(1.1) !important;
+    filter: hue-rotate(0);
+    filter: brightness(1);
+    transition: transform 0.1s ease-in-out, filter 0.2s ease-in-out;
+}
+
+.hover-avatar-light {
+    transform: translateY(-100%) scale(0.9) !important;
+    filter: hue-rotate(-60deg);
+    filter: brightness(0.75);
+    transition: transform 0.3s ease-in-out, filter 0.2s ease-in-out;
+}
+
+.user-card-span {
+    padding-left: 8px;
+}
+
+.user-card-img {
+    width: 70px;
+    height: 70px;
+    clip-path: ellipse(50% 50% at center);
+}

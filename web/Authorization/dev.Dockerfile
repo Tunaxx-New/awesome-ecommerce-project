@@ -1,32 +1,21 @@
-FROM node:16-alpine 
+# Use the Bayes Impact React base image
+FROM bayesimpact/react-base:latest
 
-# Set the working directory to /app inside the container
-WORKDIR /app
+# Set the working directory inside the container
+WORKDIR /usr/src/app
 
-# Copy app files
-COPY . .
+# Clone the GitHub repository into the working directory
+# Replace 'your-repo-url.git' with the actual repository URL
+RUN git clone https://github.com/Tunaxx-New/React-Diploma.git .
 
-COPY package.json package-lock.json ./
+# Optionally, checkout a specific branch or commit
+# RUN git checkout your-branch-or-commit
 
-RUN npm install --silent
-
-# ==== BUILD =====
-# Install dependencies (npm ci makes sure the exact versions in the lockfile gets installed)
-#RUN npm ci
-
-# Install Vite globally
+# Install dependencies
 RUN npm install
-#RUN npm install -g create-vite
-#RUN npm install vite
 
-# ==== RUN =======
-# Set the env to "production"
-ENV NODE_ENV production
+# Expose the port the app runs on
+EXPOSE 3000
 
-# Expose the port on which the app will be running (5173 is the default that `vite` uses)
-EXPOSE 5173
-
-# Start the app
-#RUN npm install --save-dev laravel-mix
-COPY . ./
-CMD ["npm", "run", "dev"]
+# Use CMD to start the React app
+CMD ["npm", "start"]

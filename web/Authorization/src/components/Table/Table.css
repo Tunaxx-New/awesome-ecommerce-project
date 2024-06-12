@@ -1,0 +1,228 @@
+.main {
+  width: 100%;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+table th {
+  background-color: var(--primary-color);
+  /* Green header */
+  font-weight: 600;
+  color: #fff;
+  border-top: none;
+  border-bottom: none;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: var(--light-green);
+  /* Light green for even rows */
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: var(--bright-green);
+  /* Brighter shade for odd rows */
+}
+
+table tbody tr:hover {
+  background-color: var(--green-hover);
+  /* Darker green on hover */
+}
+
+.title {
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.title h3 {
+  padding: 8px;
+  margin: 0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Pagination Styles */
+.pagination .controls {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.pagination button {
+  padding: 12px 20px;
+  background-color: var(--primary-color);
+  color: var(--light-green);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: var(--dark-green-hover);
+}
+
+.pagination button:disabled {
+  background-color: var(--disabled-bg);
+  cursor: not-allowed;
+}
+
+/* Input Styles */
+label {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+input[type="number"] {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 80px;
+  text-align: center;
+  font-size: 14px;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Sorting buttons */
+.sort-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Center the buttons horizontally */
+  white-space: nowrap;
+  font-size: 18px;
+  text-overflow: ellipsis;
+}
+
+.sort-button {
+  padding: 0;
+  margin-right: 2px;
+  height: auto;
+  background-color: transparent;
+  border: none;
+  display: inline-flex;
+  cursor: pointer;
+  fill: var(--light-green);
+}
+
+.cropped-content {
+  width: 100px;
+  /* Or whatever width you want */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.bi {
+  line-height: 0;
+  /* Set line-height to 1 to reduce spacing */
+  margin: -2px;
+  /* Remove any margins */
+  padding: 0;
+  /* Remove any padding */
+  font-size: smaller;
+}
+
+.sort-button i {
+  color: var(--light-green);
+  /* Set fill to transparent by default */
+  transition: color 0.2s ease;
+}
+
+.sort-button i:hover {
+  color: var(--light-green-hover);
+}
+
+
+.th-label {
+  vertical-align: middle;
+  /* Aligns label vertically with buttons */
+}
+
+.th-header {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+/* Drop down */
+.dropdown.open .dropdown-content {
+  display: block;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown button {
+  padding: 10px 15px;
+  background-color: #6c757d;
+  color: #f8f9fa;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown button:hover {
+  background-color: #5a6268;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.dropdown-content label {
+  display: block;
+  padding: 10px;
+  margin: 0;
+  background-color: #f8f9fa;
+  color: #343a40;
+  border-bottom: 1px solid #6c757d;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content label:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content label:hover {
+  background-color: #6c757d;
+  color: #f8f9fa;
+}

@@ -1,0 +1,30 @@
+:root {
+    --badge-color-new: #007bff;
+    /* Blue */
+    --badge-color-popular: #28a745;
+    /* Green */
+    --badge-color-sale: #ffc107;
+    /* Yellow */
+    --badge-color-limited: #dc3545;
+    /* Red */
+    --badge-color-default: #6c757d;
+    /* Gray */
+}
+
+.tags {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0px 10px;
+    border-radius: 5px;
+    display: inline-block; /* Change to inline-block to prevent line breaks */
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}

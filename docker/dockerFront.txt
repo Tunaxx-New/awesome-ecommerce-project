@@ -1,0 +1,20 @@
+// cd
+cd /home/awesome-ecommerce-project/web/Authorization/
+
+// Stop container
+docker stop greenshop-dev-front-1
+docker rm greenshop-dev-front-1
+// Delete image
+docker rmi greenshop-dev_front
+// Build image
+docker build -t greenshop-dev_front -f dev.Dockerfile .
+docker build --no-cache -t greenshop-dev_front -f dev.Dockerfile .
+// Run container
+docker run --network=greenshop-dev_default -d --name greenshop-dev-front-1 -p 3030:3000 greenshop-dev_front
+
+docker run --network=greenshop-dev_default -d --name greenshop-dev-front-1 -p 3030:3000 okteto/react-getting-started:latest
+
+
+// Prometheus running
+docker run --network=greenshop-dev_default -d --name prometheus -p 9090:9090 -v $(pwd)/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus:v2.44.0
+
