@@ -1,0 +1,72 @@
+/* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.navbar {
+    background-color: #4CAF50; /* Зеленый цвет для eco-theme */
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .navbar-brand {
+    color: #fff;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.navbar .nav-link {
+    color: #fff;
+    font-size: 16px;
+    padding: 8px 15px;
+    transition: color 0.3s;
+}
+
+.navbar .nav-link:hover {
+    color: #d4ffd4;
+}
+
+.navbar .btn-outline-dark {
+    color: #fff;
+    border-color: #fff;
+    margin-left: 10px;
+}
+
+.navbar .btn-outline-dark:hover {
+    background-color: #fff;
+    color: #4CAF50;
+}
+
+.loading-back {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-indicator {
+    text-align: center;
+}
+
+.loading-circle {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #4CAF50;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

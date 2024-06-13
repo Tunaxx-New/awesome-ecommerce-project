@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+// Navbar.js
+
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { UserCard } from '../../components';
 import api from '../../apis/api';
 import { useAsyncError } from '../../commons';
-
 import Cookies from "universal-cookie";
 import { RegisterSeller } from "../../components";
+// import './styles.css'; // Импортируем стили
 
 const Navbar = ({ navUpdateTrigger }) => {
     const throwAsyncError = useAsyncError();
@@ -37,7 +39,7 @@ const Navbar = ({ navUpdateTrigger }) => {
             }
             setIsLoading(false);
         });
-    }, [navUpdateTrigger])
+    }, [navUpdateTrigger]);
 
     const logout = () => {
         const cookies = new Cookies();
@@ -45,11 +47,12 @@ const Navbar = ({ navUpdateTrigger }) => {
         window.location.reload();
     };
 
-    const state = useSelector(state => state.handleCart)
+    const state = useSelector(state => state.handleCart);
     const isLogged = !(formData === undefined || formData.id === undefined);
+
     return (
         <div className="bg-light">
-            <div style={{height:"80px"}}></div>
+            <div style={{ height: "80px" }}></div>
             {isLoading && (
                 <div className="loading-back">
                     <div className="loading-indicator">
@@ -61,18 +64,17 @@ const Navbar = ({ navUpdateTrigger }) => {
             <div className="bg-light fixed-top">
                 <nav className="navbar navbar-expand-lg navbar-light">
                     <div className="container">
-                        <a class="navbar-brand" href="#">
-                            <img src={`${process.env.PUBLIC_URL}/ecogreen.png`} width="30" height="30" class="d-inline-block align-top" alt=""/>
+                        <a className="navbar-brand" href="#">
+                            <img src={`${process.env.PUBLIC_URL}/ecogreen.png`} width="30" height="30" className="d-inline-block align-top" alt="EcoGreen Logo" />
                         </a>
                         <NavLink className="navbar-brand fw-bold fs-4 px-2" to="/"> EcoGreen</NavLink>
                         <button className="navbar-toggler mx-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
-
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav m-auto my-2 text-center">
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to="/">Home </NavLink>
+                                    <NavLink className="nav-link" to="/">Home</NavLink>
                                 </li>
                                 <li className="nav-item">
                                     <NavLink className="nav-link" to="/products">Products</NavLink>
@@ -89,7 +91,7 @@ const Navbar = ({ navUpdateTrigger }) => {
                             </ul>
                             <div className="buttons text-center" style={{ display: "flex" }}>
                                 {formData && formData.seller == null && <RegisterSeller></RegisterSeller>}
-                                {formData && formData.seller && <NavLink to="/create-product/null" className="btn btn-outline-dark m-2"><i class="bi bi-box-seam-fill mr-1"></i> Create Product</NavLink>}
+                                {formData && formData.seller && <NavLink to="/create-product/null" className="btn btn-outline-dark m-2"><i className="bi bi-box-seam-fill mr-1"></i> Create Product</NavLink>}
                                 {!isLogged ? (
                                     <>
                                         <NavLink to="/login" className="btn btn-outline-dark m-2"><i className="fa fa-sign-in-alt mr-1"></i> Login</NavLink>
@@ -105,10 +107,9 @@ const Navbar = ({ navUpdateTrigger }) => {
                         </div>
                     </div>
                 </nav>
-
-            </div >
+            </div>
             {isLogged && (
-                <div class="container d-flex flex-wrap justify-content-sm-start d-flex justify-content-md-center stick-top">
+                <div className="container d-flex flex-wrap justify-content-sm-start d-flex justify-content-md-center stick-top">
                     {formData.roles.some(role => role.name === "USER") &&
                         <UserCard imageSource={`${process.env.PUBLIC_URL}/avatars/images/ava_${((formData.id + 20) % 25 + 1).toString().padStart(2, '0')}.gif`} upperText={formData.username ? formData.username : "Unknown"} lowerText="User" link={`/profile?userId=${formData.id}&type=user`}></UserCard>
                     }
@@ -124,7 +125,7 @@ const Navbar = ({ navUpdateTrigger }) => {
                 </div>
             )}
         </div>
-    )
+    );
 }
 
-export default Navbar
+export default Navbar;

@@ -3,6 +3,7 @@ import { Navbar, Main, Footer, Products, ModalWindow } from "../commons";
 import { ProductCard } from "../components";
 import Carousel from "../commons/Carousel";
 import api from "../apis/api";
+// import "./styles.css"
 // import { Product } from "../components";
 function Home() {
 
