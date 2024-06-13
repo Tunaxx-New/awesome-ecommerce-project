@@ -31,7 +31,8 @@ const ProductPage = () => {
         },
       });
     } catch (error) {
-      throwAsyncError(error);
+      console.log(error);
+      //throwAsyncError(error);
     } finally {
       window.location.reload();
     }
@@ -48,7 +49,8 @@ const ProductPage = () => {
       console.log(response, "{{{");
       setOrders(response);
     } catch (error) {
-      throwAsyncError(error);
+      console.log(error);
+      //throwAsyncError(error);
     }
   };
 
