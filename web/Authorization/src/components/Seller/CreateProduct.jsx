@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import api from "../../apis/api";
 import { useAsyncError } from '../../commons';
-import { Select } from 'react-select'; // Import react-select
+import Select from 'react-select'; // Import react-select
 
 
 // Original class component
